@@ -14,22 +14,21 @@ MBGA_BGs[1] = {
     format  = "CTF 10v10",
     strat = {
         fr = {
-            winCondition = "Rapporter 3 drapeaux ennemis dans votre base avant l'adversaire.",
-            criticalRule = "Ne surchargez JAMAIS la défense. 2-3 défenseurs max. 6+ défenseurs = l'offense ennemie fonce sans opposition.",
+            winCondition = "Volez le drapeau dans la salle ennemie et ramenez-le 3 fois dans votre base. Premier a 3 captures gagne.",
+            criticalRule = "Maximum 2-3 joueurs en defense de votre base. Si toute l'equipe defend, personne n'attaque et vous perdez. L'attaque gagne ce BG.",
             roles =
-                "• 1-2 FC : classe mobile/résistante (Pres Evoker, Resto Druide, Resto Shaman)\n" ..
-                "• 3-4 ESCORT : 1-2 heals + peelers (DK grip, Warrior Shockwave, Frost Mage roots, Ret Paladin Freedom)\n" ..
-                "• 2-3 OFFENSE : stealthes + burst (Rogue, MM Hunter, Boomkin Incarn)\n" ..
-                "• 1-2 DÉFENSE BASE : Rogue stealth + 1 classe long range\n" ..
-                "⚠️ Holy Paladin = JAMAIS FC (CDs neutralisés avec le flag)",
+                "• 1-2 PORTEURS DE DRAPEAU : classe resistante (Druide Soin, Evoker, Chaman Soin)\n" ..
+                "• 2-3 ESCORTES : ralentissent ceux qui chassent le porteur (DK, Mage Givre, Ret Paladin)\n" ..
+                "• 2-3 ATTAQUANTS : entrent dans leur base pour voler le drapeau (Rogue, DH Havoc)\n" ..
+                "• 1-2 DEFENSEURS gardent votre drapeau\n" ..
+                "JAMAIS Paladin Sacre porteur : ses boucliers se desactivent quand il porte le drapeau",
             planA =
-                "1. Stealther prend le drapeau en furtif, le garde sans scorer\n" ..
-                "2. 2 heals construisent le momentum les 30 premières secondes\n" ..
-                "3. Passe sécurisée : vérifiez BGE (stealther ennemi en embuscade ?)\n" ..
-                "4. DK/Warrior/Frost Mage bloquent les rampes contre les FC ennemis\n" ..
-                "5. WSG : défense solide dans les rampes. TP : priorité à l'offense, moins de défense.",
+                "1. Les furtifs (Rogues) entrent discritement et volent leur drapeau\n" ..
+                "2. Le porteur court vers votre base avec les escortes autour de lui\n" ..
+                "3. Bloquez les couloirs (rampes et tunnels lateraux) pour ralentir leurs porteurs\n" ..
+                "4. Votre drapeau est vole ? Ne ramenez PAS le leur avant de l'avoir recupere",
             planB =
-                "Score 0-2 retard : 8 joueurs en défense totale, 2 Rogues ninja le flag ennemi quand leur base est dégarnie.",
+                "Score 0-2 de retard : 8 joueurs gardent votre drapeau, 2 furtifs tentent un vol surprise quand leur base est vide.",
         },
     },
 }
@@ -41,20 +40,20 @@ MBGA_BGs[2] = {
     format  = "CTF 10v10",
     strat = {
         fr = {
-            winCondition = "Rapporter 3 drapeaux ennemis dans votre base. Twin Peaks = carte ouverte, la course gagne.",
-            criticalRule = "Alliance : stoppez les knockbackers sur la falaise extérieure — Stun/Silence avant qu'ils éjectent votre FC dans le vide.",
+            winCondition = "Volez le drapeau ennemi et ramenez-le 3 fois dans votre base. Carte ouverte : la vitesse prime sur la defense.",
+            criticalRule = "Attention aux bords de falaise. L'ennemi va essayer de pousser votre porteur de drapeau dans le vide. Gardez votre porteur loin des precipices.",
             roles =
-                "• 1-2 FC : classe mobile (Pres Evoker prioritaire sur carte ouverte)\n" ..
-                "• 2 ESCORT offensifs : Ret Paladin (Freedom + BoP + LoH), DK\n" ..
-                "• 3-4 OFFENSE : très important sur TP (carte ouverte = moins de défense)\n" ..
-                "• 1-2 DÉFENSE allégée : Pres + Ret peut suffire en défense",
+                "• 1-2 PORTEURS : classe tres mobile (Evoker ideal sur cette grande carte ouverte)\n" ..
+                "• 2 ESCORTES : Ret Paladin (peut rendre son porteur invulnerable + soins), DK\n" ..
+                "• 3-4 ATTAQUANTS : la vitesse est cle sur cette carte, foncez sur leur base\n" ..
+                "• 1-2 DEFENSEURS (leger : 2 joueurs suffisent ici contrairement a d'autres BG)",
             planA =
-                "1. Priorité absolue à la vitesse de course — si vous gagnez la course, vous gagnez\n" ..
-                "2. Certaines équipes jouent 6v2 offensif : Pres + Ret en seule défense, 6 en offense\n" ..
-                "3. Évitez le fight au milieu — contournez vers leur base\n" ..
-                "4. Sur la falaise : positionnez votre FC à l'écart des bords, knockbackers en couverture",
+                "1. Vitesse absolue : prenez leur drapeau AVANT eux et courez, vous gagnez la course\n" ..
+                "2. Contournez les combats au milieu, allez directement a leur base\n" ..
+                "3. Porteur sur la falaise : restez loin des bords, escortes positionnees devant\n" ..
+                "4. Option aggressive : 1-2 defenseurs seulement, 6 joueurs en attaque",
             planB =
-                "Score 0-2 : mêmes FC sur la route + tout le monde en ESCORT serré. La survie du FC prime.",
+                "Retard 0-2 : serrez l'escorte autour du porteur, sa survie prime sur tout le reste.",
         },
     },
 }
@@ -66,22 +65,19 @@ MBGA_BGs[3] = {
     format  = "Domination 15v15",
     strat = {
         fr = {
-            winCondition = "Première équipe à 1600 ressources. Tenir 3+ nodes = tick victorieux. Contester leurs nodes vaut autant que défendre les vôtres.",
-            criticalRule = "BLACKSMITH : 2 joueurs MAXIMUM. 3+ joueurs = catastrophe — vos autres nodes tombent en sous-effectif. Un 3v2 avec healer spin indéfiniment.",
+            winCondition = "5 bases a capturer : Ecuries, Ferme, Moulin, Mines, Forges. Tenir 3 bases en meme temps fait marquer des points. Premier a 1600 points gagne.",
+            criticalRule = "Les Forges (au centre de la carte) : MAXIMUM 2 joueurs. Y envoyer 5-6 joueurs = vos autres bases tombent faute de defenseurs. 2 joueurs bien places suffisent.",
             roles =
-                "• BLACKSMITH : 1 healer tanky (Prêtre/Paladin) + 1 DPS disruptif — jouez PASSIF\n" ..
-                "• LUMBERMILL : 1 healer avec mobilité (Pres Evoker/Mistweaver) + 1 DPS knockback (Ele Shaman, Mage)\n" ..
-                "• MINES : Ret Paladin + burst depuis stealth — utilisez TOUS VOS CDs au 1er fight\n" ..
-                "• FARM/STABLES : 1-2 joueurs + renforts rotants depuis l'axe horizontal\n" ..
-                "⚠️ Warrior/mêlée sans self-heal → pas aux Mines sans healer",
+                "• 3 groupes de 4-5 joueurs sur les 3 bases de votre cote\n" ..
+                "• 1 healer par base minimum\n" ..
+                "• Ret Paladin ou Rogue : harcele les bases ennemies pour forcer leurs joueurs a bouger",
             planA =
-                "1. Trois groupes capent leur triangle simultanément au départ\n" ..
-                "2. Mines : Ret Paladin pop tous ses CDs d'entrée (Bubble → BoP → LoH = 3 immunités)\n" ..
-                "3. LM : knockback défensif depuis la falaise — l'ennemi ne peut pas burst si risque d'éjection\n" ..
-                "4. Technique 'Fake BS push' : avancez vers BS → ennemi quitte LM → rebroussez → prenez LM\n" ..
-                "5. Contestez leurs nodes avec un Ret ou Rogue pour forcer leur rotation",
+                "1. Depart : 3 groupes capturent les 3 bases les plus proches (votre triangle selon votre faction)\n" ..
+                "2. 3-4 joueurs par base suffit, ne surchargez pas une seule base\n" ..
+                "3. Forges (base au centre) : envoyez 2 joueurs max, jouez defensif\n" ..
+                "4. Attaquez UNE base ennemie a la fois avec un groupe entier, ne vous dispersez pas",
             planB =
-                "1-node ou 0-node : tout le monde au BS, puis extension progressive vers Farm ou Mine.",
+                "Vous tenez 1 base ou moins : tout le monde aux Forges, puis etendez vers les bases adjacentes.",
         },
     },
 }
@@ -93,20 +89,19 @@ MBGA_BGs[4] = {
     format  = "Dom+CTF 15v15",
     strat = {
         fr = {
-            winCondition = "Première équipe à 1500 ressources. 2 nodes + 0 drapeau = WIN CONDITION parfaite — l'ennemi ne marque AUCUN point même s'il vous tue.",
-            criticalRule = "Ne capturez JAMAIS le drapeau si vous avez 2 nodes. DROPEZ-le (clic droit buff → retirer) pour reforcer l'ennemi à aller le chercher et quitter vos nodes.",
+            winCondition = "4 tours dans les angles + 1 cristal au centre. Chaque tour tenue rapporte des points. Le cristal donne des points bonus si ramene dans une tour. Premier a 1500 points gagne.",
+            criticalRule = "Vous tenez 2 tours ? NE PRENEZ PAS le cristal central. Il ne sert a rien et distrait votre equipe. Restez sur vos 2 tours et laissez-les se battre pour le cristal.",
             roles =
-                "• 2 groupes de 6-7 sur les nodes de votre côté respectif\n" ..
-                "• 1 healer par node — se répartir immédiatement si le jeu bascule en mode CTF\n" ..
-                "• Flag runner : uniquement si vous avez 3 nodes ou score à 1850+ pts",
+                "• 2 groupes de 6-7 joueurs chacun sur vos 2 tours\n" ..
+                "• 1 healer par tour minimum\n" ..
+                "• Cristal : seulement si vous avez 3 tours OU si vous etes a 1850+ points (pour finir vite)",
             planA =
-                "1. Capez 2 nodes côté allié immédiatement — ne luttez pas pour les 2 nodes opposés\n" ..
-                "2. Avec 2 nodes sécurisés : dropez le drapeau si quelqu'un l'a — interdiction absolue de capper\n" ..
-                "3. Passez en mode 'spin défensif' : CC, survivre, tick tranquille\n" ..
-                "4. Timing de fin : avec 3 tours à 1850 pts → capez pour victoire instantanée\n" ..
-                "5. Combattez DANS le radius du flag de la tour (pas à côté) — les points comptent seulement dans le radius",
+                "1. 2 groupes capturent les 2 tours de votre cote (pas besoin de traverser la carte)\n" ..
+                "2. Tenez ces 2 tours : c'est tout ce qu'il faut faire pour gagner\n" ..
+                "3. Cristal central : ignorez-le si vous avez 2 tours\n" ..
+                "4. Combattez DANS le cercle de la tour (pas a cote) pour que vos kills comptent pour la capture",
             planB =
-                "Perte des 2 nodes : passez en mode CTF total — 1 healer par node actif, utilisez toute votre mobilité.",
+                "Vous perdez vos 2 tours : tout le monde prend le cristal et le ramene dans la tour la plus proche.",
         },
     },
 }
@@ -118,19 +113,19 @@ MBGA_BGs[5] = {
     format  = "Domination 15v15",
     strat = {
         fr = {
-            winCondition = "Première équipe à contrôler 2 des 3 bases (Lighthouse, Waterworks, Mine). Lighthouse et Mine = bases triangulaires, WW = objectif central.",
-            criticalRule = "Ghosting Dangereux : ne cappez leur base QUE si vous pouvez la tenir. Ghosting raté = down 1 joueur + leur rotation reprend + double peine.",
+            winCondition = "3 bases a capturer : Phare (gauche), Station de Pompage (centre), Mine (droite). Tenez 2 des 3 en meme temps. Premier a 2000 points gagne.",
+            criticalRule = "N'attaquez PAS une base avec 3+ ennemis dedans. Trop risque. Allez harasser une autre base pour forcer les ennemis a se deplacer, puis revenez.",
             roles =
-                "• WATERWORKS : team fight principal, spin le flag en permanence\n" ..
-                "• LIGHTHOUSE/MINE floater : 1 DPS mobile (DH Havoc, Boomkin, Augment Evoker) — matcher sans sortir de healer\n" ..
-                "• Règle match numbers : 2 DPS ennemis → 1 DPS mobile (pas un healer !), 3+ ennemis → 1 healer + 1 DPS",
+                "• Station de Pompage (centre) : combat principal, 1 healer minimum\n" ..
+                "• 1 joueur mobile harcele les bases ennemies (oblige l'ennemi a bouger pour defendre)\n" ..
+                "• Matchez leurs effectifs : 2 ennemis sur une base = envoyez 2 joueurs, pas 6",
             planA =
-                "1. Capez 2 bases immédiatement (LH + Mine OU WW + une autre)\n" ..
-                "2. Prenez Shadow Sight (près du WW) — révèle les ennemis en stealth, pinguez leur position\n" ..
-                "3. WW : interrompez les sorts ennemis, stoppez les drinks, ciblez les heals\n" ..
-                "4. Matchez leurs envoyés avec la classe adaptée — Augment Evoker ideal floater",
+                "1. Capturez 2 bases au depart (Phare + Mine ou Station + une autre)\n" ..
+                "2. Cherchez l'orbe Shadow Sight (pres de la Station) : il revele les ennemis en furtif\n" ..
+                "3. Station : interrompez les sorts ennemis, ciblez les healers en premier\n" ..
+                "4. Envoyez exactement autant de joueurs qu'eux sur chaque base (ni plus, ni moins)",
             planB =
-                "Perte de 2 bases : focus WW en masse (7v6), tenez-le, puis extension vers la base la plus proche.",
+                "Vous tenez 0 base : tout le monde a la Station de Pompage, puis etendez vers la base adjacente la plus facile.",
         },
     },
 }
@@ -142,19 +137,19 @@ MBGA_BGs[6] = {
     format  = "Payload 10v10",
     strat = {
         fr = {
-            winCondition = "Premier à livrer les 3 chariots (Lava, Middle, Top) à destination. Chaque chariot complété vaut des points. Lava = priorité absolue.",
-            criticalRule = "NE JAMAIS commencer en Top. Si vous gagnez Middle, vous pouvez aller en Top. L'inverse = votre equipe Lava est en 2v3 et perd tout.",
+            winCondition = "3 chariots a escorter jusqu'a destination (Lave en bas, Milieu, Haut). Restez pres du chariot pour le faire avancer. Premier a livrer les 3 gagne.",
+            criticalRule = "Commencez TOUJOURS par le chariot du bas (Lave). Si personne n'est a Lave, votre equipe meurt en boucle dans la lave. Ne commencez JAMAIS par le chariot du Haut.",
             roles =
-                "• LAVA (5) : healer obligatoire. Classes résistantes : DK Sang, Ret Paladin, Prot Warrior, Vengeance DH, Healer\n" ..
-                "• OFF-CARTS (3) : Middle puis Top — Classes solo sans healer : Rogue, DH Havoc, Feral Druide, Boomkin, Augment Evoker\n" ..
-                "• Si l'ennemi envoie un healer off-carts → matchez avec un healer off-carts aussi",
+                "• LAVE (5 joueurs) : 1 healer obligatoire. Classes resistantes : DK, Ret Paladin, Prot Warrior\n" ..
+                "• MILIEU puis HAUT (3 joueurs) : classes qui survivent seules (Rogue, DH Havoc, Druide Feral)\n" ..
+                "• Si l'ennemi envoie un healer sur ses chariots : envoyez-en un aussi",
             planA =
-                "1. 5 joueurs résistants partent en Lava avec le healer\n" ..
-                "2. 3 classes solo vont en Middle d'abord — sécurisez Middle AVANT d'aller en Top\n" ..
-                "3. Une fois Middle sécurisé, 1-2 peuvent monter en Top\n" ..
-                "4. Si l'ennemi envoie un healer en off-carts : matchez immédiatement",
+                "1. 5 joueurs resistants + 1 healer vont immediatement au chariot Lave (en bas)\n" ..
+                "2. 3 classes autonomes vont au chariot du Milieu d'abord\n" ..
+                "3. Milieu bien avance -> 1-2 joueurs montent au chariot du Haut\n" ..
+                "4. Lave en danger : envoyez un joueur en renfort depuis un autre chariot",
             planB =
-                "Perte des off-carts : tournez les rails du Top pour libérer des joueurs. Perdez les Middles → tournez les rails du Top.",
+                "Vous perdez le Milieu et le Haut : concentrez tout sur Lave, c'est le plus important.",
         },
     },
 }
@@ -166,24 +161,19 @@ MBGA_BGs[7] = {
     format  = "Orbes 10v10",
     strat = {
         fr = {
-            winCondition = "Première équipe à 1500 points. Points/s selon position des porteurs : centre (max) > intérieur > extérieur. Kite à l'extérieur = survie maximale.",
-            criticalRule = "⚠️ Holy Paladin et Guerrier pur mêlée = JAMAIS porteurs d'orbe. Kiter HORS du temple bat toujours le strategy 'aller au centre' tant que votre équipe domine.",
+            winCondition = "4 orbes dans les angles du temple. Portez-les. Plus vous restez pres du centre, plus vous marquez de points vite. Premier a 1500 points gagne.",
+            criticalRule = "Prenez SEULEMENT 2 orbes (votre cote). Si vous prenez les 4, personne ne peut chasser leurs porteurs. 2 orbes bien proteges valent toujours mieux que 4 indefensables.",
             roles =
-                "Hiérarchie porteurs d'orbe :\n" ..
-                "1. Preservation Evoker (self-heal en mouvement + souffle + Hover)\n" ..
-                "2. Resto Druide (HoTs en courant, Dash, Forme Ours)\n" ..
-                "3. Démoniste Affliction (Drain Life passif, Port de secours LoS)\n" ..
-                "4. Démoniste Destruction (Port LoS, Sacrifice + self-heal)\n" ..
-                "5. Démon Hunter Havoc (Blur + Darkness + mobilité extrême)\n" ..
-                "6. Sub Rogue (Shadow Dance derrière un pilier)",
+                "Meilleurs porteurs (resistants en mouvement) : Druide Soin, Evoker, Demoniste\n" ..
+                "MAUVAIS porteurs : Paladin Sacre, Guerrier (ils ont besoin de rester immobiles)\n" ..
+                "4 joueurs chassent activement les porteurs ennemis pour les tuer",
             planA =
-                "1. Prenez vos 2 orbes côté allié — NE JAMAIS prendre les 4 (personne pour tuer leurs porteurs)\n" ..
-                "2. Porteurs : kitez à l'EXTÉRIEUR du temple entre les piliers pour LoS\n" ..
-                "3. 1 healer suit les porteurs défensifs, 1 healer avance avec les DPS offensifs\n" ..
-                "4. Technique Warlock : port → drop l'orbe derrière un mur → burst → reprend via port\n" ..
-                "5. À 150+ stacks sur un porteur ennemi : 3 sur lui immédiatement",
+                "1. Prenez vos 2 orbes (votre cote), laissez les 2 autres\n" ..
+                "2. Porteurs : restez derriere les piliers du temple (ils bloquent les tirs)\n" ..
+                "3. Fuyez vers l'exterieur si vous etes chasses (vous survivez plus longtemps)\n" ..
+                "4. Porteur ennemi avec beaucoup de stacks de douleur (icone rouge) : 3 joueurs sur lui",
             planB =
-                "Perte de 2 orbes : défense totale de l'extérieur du temple, ciblez les porteurs ennemis à faibles stacks.",
+                "Vous perdez vos 2 orbes : defense a l'exterieur du temple, tuez leurs porteurs les moins proteges.",
         },
     },
 }
@@ -195,20 +185,19 @@ MBGA_BGs[8] = {
     format  = "Domination 15v15",
     strat = {
         fr = {
-            winCondition = "Première équipe à 1500 ressources. 5 nodes : votre triangle + Market central + leur triangle. Tenir 3+ nodes = win.",
-            criticalRule = "MARKET : 2 joueurs MAXIMUM (1 healer tanky + 1 DPS disruptif). 3+ joueurs = vos bases extérieures tombent en cascade. Rotation HORIZONTALE uniquement.",
+            winCondition = "5 bases dont le Marche au centre. Tenez 3 bases en meme temps. Meme principe qu'Arathi. Premier a 1500 points gagne.",
+            criticalRule = "Le Marche (base au centre) : MAXIMUM 2 joueurs. Envoyer plus = vos autres bases tombent. Rotations gauche-centre-droite SEULEMENT, sans traverser tout le BG.",
             roles =
-                "• MARKET : 1 healer tanky (Mistweaver/Resto Shaman) + 1 DPS disruptif (DK, Ret)\n" ..
-                "• Bases alliées : 1-2 par node, rotations horizontales uniquement\n" ..
-                "• Floater Ret/Rogue : conteste leurs bases pour forcer leur rotation",
+                "• Marche (centre) : 1 healer tanky + 1 DPS\n" ..
+                "• Bases alliees : 1-2 joueurs chacune\n" ..
+                "• Ret Paladin / Rogue : harcele leurs bases pour les forcer a bouger",
             planA =
-                "1. Capez votre triangle, 2 joueurs vont au Market\n" ..
-                "2. ROTATION HORIZONTALE : votre base ↔ Market ↔ bases adjacentes uniquement\n" ..
-                "3. Surveillez le CD Reset Buff (Market + fontaine Shrine) — reset de tous les CDs + haste\n" ..
-                "4. Enviez un Ret/Rogue contester leurs bases pour forcer leur rotation\n" ..
-                "5. 6+ de votre côté vs 0 de l'autre → seul cas où traversée verticale justifiée",
+                "1. Capturez votre triangle, envoyez 2 joueurs au Marche\n" ..
+                "2. Rotation HORIZONTALE uniquement : votre base -> Marche -> votre autre base\n" ..
+                "3. Buff de reset (au Marche et a la fontaine) : recharge TOUS vos cooldowns + bonus de vitesse\n" ..
+                "4. Harcelez 1-2 de leurs bases pour les forcer a quitter leurs positions",
             planB =
-                "Perte du triangle : tout le monde au Market, puis extension vers la base la plus proche.",
+                "Vous perdez vos bases : tout le monde au Marche, puis etendez vers les bases les plus proches.",
         },
     },
 }
@@ -220,19 +209,19 @@ MBGA_BGs[9] = {
     format  = "Nodes dynamiques 10v10",
     strat = {
         fr = {
-            winCondition = "Première équipe à 1500 ressources. Les nodes apparaissent et disparaissent dynamiquement sur la map — suivez les marqueurs carte.",
-            criticalRule = "Les nodes ennemis trop défendus = passez au suivant. Abandonner un node = correct si 3+ ennemis le défendent.",
+            winCondition = "Des rochers de cristal apparaissent aleatoirement sur la carte (bips sur la minimap). Capturez-les pour marquer des points. Ils disparaissent et bougent en permanence. Premier a 1500 points gagne.",
+            criticalRule = "Regardez la minimap en permanence. Les rochers bougent. Aller a un endroit vide = perdre du temps. Node ennemi avec 3+ defenseurs : passez au suivant.",
             roles =
-                "• 6 joueurs mobiles : suivent les nodes dès apparition (marqueur carte)\n" ..
-                "• 2 joueurs : harcèlent les nodes ennemis pour briser le tick\n" ..
-                "• 2 joueurs : défensent les nodes déjà tenus",
+                "• 6 joueurs mobiles : vont aux nouveaux rochers des qu'ils apparaissent sur la minimap\n" ..
+                "• 2 joueurs : harcelent les nodes ennemis pour briser leur capture en cours\n" ..
+                "• 2 joueurs : gardent les rochers deja captures",
             planA =
-                "1. 6 joueurs mobiles suivent les nodes dès qu'ils apparaissent sur la carte\n" ..
-                "2. 2 joueurs harcèlent les nodes ennemis pour briser leur tick\n" ..
-                "3. 2 joueurs défendent les nodes déjà capturés\n" ..
-                "4. Abandonner un node trop défendu : CORRECT — allez au node suivant",
+                "1. 6 joueurs mobiles vont aux rochers des qu'ils apparaissent (regardez la minimap constamment)\n" ..
+                "2. 2 joueurs harcelent les nodes ennemis pour interrompre leur capture\n" ..
+                "3. 2 joueurs protegent vos nodes deja pris\n" ..
+                "4. Node avec 3+ ennemis que vous n'arrivez pas a briser : passez au rotcher suivant",
             planB =
-                "Retard de 2+ nodes : tout le monde en mode harassment sur leurs nodes pour briser le tick — reconstituez vos nodes en parallèle.",
+                "Retard de 2+ nodes : tout le monde harcele leurs nodes pour briser le tick, capturez les libres en meme temps.",
         },
     },
 }
@@ -244,20 +233,20 @@ MBGA_BGs[10] = {
     format  = "Payload+Cristal 10v10",
     strat = {
         fr = {
-            winCondition = "Première équipe à 5 points (chariots + orbe central). Full wipe au milieu = game quasi terminée.",
-            criticalRule = "Match Numbers STRICTEMENT : 1 ennemi va dans votre chariot = envoyez 1 personne, PAS 6. Surengager = perdre le fight du milieu = l'ennemi prend tout.",
+            winCondition = "2 chariots (un par equipe) a escorter + 1 orbe au centre. Chaque livraison de chariot ou capture d'orbe = 1 point. Premier a 5 points gagne.",
+            criticalRule = "Matchez exactement leurs effectifs : 1 ennemi dans votre chariot = envoyez 1 joueur seulement. Envoyer 6 contre 1 = vous perdez le milieu et l'orbe.",
             roles =
-                "• Fight du milieu : majorité de l'équipe — healer(s) obligatoire(s)\n" ..
-                "• Defender chariot : 1 personne matche 1 ennemi, ni plus ni moins\n" ..
-                "• Orbe du milieu : 2 joueurs tanky + 2 heals (mode Market stall)\n" ..
-                "• Base sitter : se REPOSITIONNE avant que le nouveau chariot spawne — pas après",
+                "• Majorite de l'equipe tient le combat du milieu (c'est le pivot)\n" ..
+                "• 1 joueur defend votre chariot contre exactement 1 ennemi\n" ..
+                "• Orbe central : 2 joueurs resistants + healers\n" ..
+                "• Un caster peut tuer l'ennemi dans le chariot et revenir au milieu rapidement",
             planA =
-                "1. Maintenez le fight du milieu — c'est le pivot de toute la map\n" ..
-                "2. Matchez exactement leurs envoyés dans vos chariots (1 pour 1)\n" ..
-                "3. Base sitter : repositionnez-vous AVANT le spawn du nouveau chariot\n" ..
-                "4. Un caster rapide peut finir quelqu'un dans le chariot et revenir sans manquer le mid",
+                "1. Gardez le combat du milieu : tout se gagne ou se perd ici\n" ..
+                "2. 1 joueur defend votre chariot contre 1 ennemi seulement\n" ..
+                "3. Repositionnez-vous AVANT que le nouveau chariot spawne (pas apres)\n" ..
+                "4. Tuez le healer ennemi en priorite -> prenez l'orbe pendant les kills",
             planB =
-                "En retard d'un orbe : 8 joueurs au milieu, ciblez le healer ennemi → CC → wipe → cap orbe. Quelqu'un clique l'orbe PENDANT que les DPS finissent les kills. Si vraiment down : 3 tanky+2 heals dans LEUR chariot, tous CDs pop.",
+                "En retard d'un orbe : 8 joueurs au milieu, tuez leur healer d'abord, puis prenez l'orbe. Si tres en retard : 3 joueurs resistants + 2 healers s'infiltrent dans LEUR chariot avec tous les cooldowns.",
         },
     },
 }
@@ -271,36 +260,36 @@ MBGA_BGs[11] = {
     format  = "Rush 40v40",
     strat = {
         fr = {
-            winCondition = "Tuer le général ennemi (Horde : Drek'Thar / Alliance : Vanndar). AV est une COURSE symétrique — votre offense gagne, pas votre défense.",
-            criticalRule = "NE JAMAIS s'arrêter pour fight au milieu. Laissez Snowfall GY NEUTRE (y capper = Alliance respawn au milieu = turtle catastrophique).",
+            winCondition = "Tuez le general ennemi au fond de la carte.\nHorde : Vanndar est dans la forteresse au NORD. Alliance : Drek'Thar est dans la forteresse au SUD.\nC'est une COURSE : foncez directement, ne vous arretez pas pour combattre.",
+            criticalRule = "Ne capturez PAS le cimetiere de Snowfall (le cimetiere au milieu de la carte). Si vous le prenez, les ennemis reapparaissent au centre et bloquent votre avancee vers le general. Passez-le en courant.",
             roles =
-                "• Push principal (25-30) : ne s'arrêtent pas, capent GYs en chemin\n" ..
-                "• Brûleurs de tours (5-8) : en parallèle du push — chaque tour −75 renforts sur le général\n" ..
-                "• 2 joueurs min restent dans chaque bunker/tour capé (furtifs ennemis peuvent recapper)\n" ..
-                "• Rogue/Druide en avant-garde : cap furtif du 1er bunker ennemi pendant que les 30 autres fight",
+                "• 25-30 joueurs : foncent vers le general sans s'arreter\n" ..
+                "• 5-8 joueurs : detruisent les tours en chemin (chaque tour detruite = le general ennemi a moins de vie)\n" ..
+                "• Furtifs en avant : capturent le 1er bunker ennemi pendant que les autres combattent les sous-officiers\n" ..
+                "• Capturez les cimetieres en chemin : ca raccourcit vos trajets de resurrection apres mort",
             planA =
-                "HORDE : GY Stonehearth → Balinda → Iceblood Tower → Frostwolf Relief Hut → Tours × 4 → Drek\n" ..
-                "ALLIANCE : IBGY → Galvangar → Iceblood Tower → Relief Hut → Frostwolf Towers × 4 → Drek\n" ..
-                "Règle : n'attaquez pas le général avec moins de 3 tours brûlées\n" ..
-                "Si chokepoint défendu : contournez monté vers le Frostwolf Relief Hut directement",
+                "HORDE : rush vers le nord -> capturez les cimetieres en chemin -> detruisez les 4 tours -> tuez Vanndar\n" ..
+                "ALLIANCE : rush vers le sud -> meme trajet -> tuez Drek'Thar\n" ..
+                "REGLE : n'attaquez pas le general avec moins de 3 tours detruites (il a encore trop de vie)\n" ..
+                "BLOQUES : contournez a cheval par les bords de la carte, ne forcez pas un passage frontal",
             planB =
-                "Horde bloquée : 5-8 joueurs vers Frostwolf Relief Hut + brûlez les tours Est/Ouest depuis le RH. Alliance bloquée : même stratégie, contournez le chokepoint monté.",
+                "Bloques au milieu : 5-8 joueurs contournent par les cotes et brulent les tours. Ne tentez pas de passer en frontal.",
         },
         en = {
-            winCondition = "Kill the enemy general (Horde: Drek'Thar / Alliance: Vanndar). AV is a RACE — your offense wins, your defense doesn't.",
-            criticalRule = "NEVER stop to fight in the middle. Leave Snowfall GY NEUTRAL (capping it = Alliance respawns at mid = catastrophic turtle).",
+            winCondition = "Kill the enemy general deep in the map.\nHorde: Vanndar is in the fortress to the NORTH. Alliance: Drek'Thar is in the fortress to the SOUTH.\nThis is a RACE: rush straight there, do not stop to fight.",
+            criticalRule = "Do NOT capture Snowfall graveyard (the graveyard in the middle of the map). Taking it makes enemies respawn at the center and blocks your path to the general.",
             roles =
-                "• Main push (25-30): never stop, cap GYs along the way\n" ..
-                "• Tower burners (5-8): parallel to push — each tower destroyed = −75 general reinforcements\n" ..
-                "• 2+ players stay in each capped bunker/tower (enemy stealthers can recapture)\n" ..
-                "• Rogue/Druid point: stealth-cap first enemy bunker while 30 others fight Balinda/Galvangar",
+                "• 25-30 players: rush the general without stopping\n" ..
+                "• 5-8 players: destroy towers en route (each tower destroyed = enemy general has fewer hit points)\n" ..
+                "• Stealthers up front: stealth-cap first enemy bunker while others fight the sub-bosses\n" ..
+                "• Capture graveyards along the way: shortens respawn trips after death",
             planA =
-                "HORDE: Stonehearth GY → Balinda → Iceblood Tower → Frostwolf Relief Hut → Towers × 4 → Drek\n" ..
-                "ALLIANCE: IBGY → Galvangar → Iceblood Tower → Relief Hut → Frostwolf Towers × 4 → Drek\n" ..
-                "Rule: don't attack the general with fewer than 3 towers burned\n" ..
-                "If chokepoint is defended: ride around it directly to Frostwolf Relief Hut",
+                "HORDE: rush north -> cap graveyards on the way -> burn 4 towers -> kill Vanndar\n" ..
+                "ALLIANCE: rush south -> same route -> kill Drek'Thar\n" ..
+                "RULE: don't attack the general with fewer than 3 towers burned (too much health remaining)\n" ..
+                "BLOCKED: ride around the flanks, don't charge into the enemy mass",
             planB =
-                "Horde stuck: 5-8 players to Frostwolf Relief Hut + burn East/West towers from RH. Alliance stuck: same, ride around the chokepoint.",
+                "Blocked in the middle: 5-8 players ride around the flanks and burn towers. Don't try the frontal route.",
         },
     },
 }
@@ -312,34 +301,34 @@ MBGA_BGs[12] = {
     format  = "Siège 40v40",
     strat = {
         fr = {
-            winCondition = "Détruire les portes du Keep ennemi et tuer leur général. Map ASYMÉTRIQUE : Horde = Hangar (airship), Alliance = Docks (Glaive Throwers).",
-            criticalRule = "Horde : Glaive Throwers Alliance depuis la péninsule Ouest = HORS de portée de vos canons. Détruisez-les EN PRIORITÉ ABSOLUE dès qu'ils apparaissent.",
+            winCondition = "Detruisez les portes de la forteresse ennemie avec des vehicules de siege, puis tuez leur general a l'interieur. Carte asymetrique : chaque faction a sa propre strategie.",
+            criticalRule = "HORDE : les catapultes a lames Alliance (sur la peninsule Ouest) sont HORS portee de vos canons. Detruisez-les en priorite absolue des qu'elles apparaissent.",
             roles =
-                "• HORDE : Hangar (équipe airship 8-10) + Workshop (Demolishers vers porte Est)\n" ..
-                "• ALLIANCE : Docks + Glaive Throwers sur péninsule Ouest (3-4 protecteurs obligatoires)\n" ..
-                "• Technique 'Back Door' : parachutez via airship/catapulte dans le Keep ennemi → ramassez Huge Seaforium Bombs → brèche de l'intérieur",
+                "• HORDE : equipe Hangar (8-10) controlent le vaisseau aerien + equipe Artisanat construit les vehicules de siege\n" ..
+                "• ALLIANCE : equipe Docks + construisent des catapultes a lames (3-4 protecteurs obligatoires pres des catapultes)\n" ..
+                "• Porte Derobee : 3-5 joueurs se parachutent dans le fortin ennemi -> trouvent les Huge Seaforium Bombs -> font exploser les portes de l'interieur",
             planA =
-                "HORDE : Hangar → Airship → Porte EST du Keep Alliance + Workshop → Demolishers soutien\n" ..
-                "ALLIANCE : Docks → Glaive Throwers (péninsule Ouest, hors portée canons Horde) → brèche\n" ..
-                "Back Door : 3-5 joueurs catapultés/parachutés dans le Keep ennemi → Huge Seaforium Bombs\n" ..
-                "Objectif PvE : tuer général après brèche",
+                "HORDE : prenez le Hangar -> vaisseau aerien -> attaquez la porte Est du fortin Alliance + vehicules depuis l'Artisanat\n" ..
+                "ALLIANCE : prenez les Docks -> catapultes a lames (peninsule Ouest, hors portee Horde) -> percez\n" ..
+                "PORTE DEROBEE : 3-5 joueurs parachutes dans le fortin ennemi -> Huge Seaforium Bombs -> percez de l'interieur\n" ..
+                "Objectif final : tuez le general apres la breche",
             planB =
-                "Horde perd Hangar : 8 joueurs le reprennent immédiatement. Workshop seul = Demolishers porte Ouest. Alliance perd Docks : 10 joueurs reprennent Docks → priorité absolue.",
+                "Horde perd le Hangar : 8 joueurs le reprennent immediatement. Alliance perd les Docks : 10 joueurs, priorite absolue.",
         },
         en = {
-            winCondition = "Destroy enemy Keep doors and kill their general. ASYMMETRIC map: Horde = Hangar (airship), Alliance = Docks (Glaive Throwers).",
-            criticalRule = "Horde: Alliance Glaive Throwers from the West peninsula are OUT OF RANGE of your cannons. Destroy them as an ABSOLUTE PRIORITY the moment they appear.",
+            winCondition = "Destroy the enemy Keep's gates with siege vehicles, then kill their general inside. Asymmetric map: each faction has a different strategy.",
+            criticalRule = "HORDE: Alliance Glaive Throwers from the West peninsula are OUT OF RANGE of your cannons. Destroy them as ABSOLUTE PRIORITY the moment they appear.",
             roles =
-                "• HORDE: Hangar team (8-10, airship) + Workshop (Demolishers to East gate)\n" ..
-                "• ALLIANCE: Docks + Glaive Throwers on West peninsula (3-4 protectors mandatory)\n" ..
-                "• 'Back Door' technique: parachute/catapult into enemy Keep → grab Huge Seaforium Bombs → breach from inside",
+                "• HORDE: Hangar team (8-10, control airship) + Workshop team (builds siege vehicles to East gate)\n" ..
+                "• ALLIANCE: Docks team + Glaive Thrower builders (3-4 protectors mandatory near the Glaive Throwers)\n" ..
+                "• Back Door: 3-5 players parachuted into enemy Keep -> grab Huge Seaforium Bombs -> breach from inside",
             planA =
-                "HORDE: Hangar → Airship → East gate of Alliance Keep + Workshop → Demolisher support\n" ..
-                "ALLIANCE: Docks → Glaive Throwers (West peninsula, out of Horde cannon range) → breach\n" ..
-                "Back Door: 3-5 players catapulted/parachuted into enemy Keep → Huge Seaforium Bombs\n" ..
-                "PvE objective: kill general after breach",
+                "HORDE: take Hangar -> airship -> attack Alliance Keep East gate + Workshop builds siege vehicles\n" ..
+                "ALLIANCE: take Docks -> Glaive Throwers (West peninsula, out of Horde cannon range) -> breach\n" ..
+                "BACK DOOR: 3-5 players parachuted into enemy Keep -> Huge Seaforium Bombs -> breach from inside\n" ..
+                "Final: kill general after breach",
             planB =
-                "Horde loses Hangar: 8 players retake immediately. Workshop alone = Demolishers West gate. Alliance loses Docks: 10 players retake immediately — absolute priority.",
+                "Horde loses Hangar: 8 players retake immediately. Alliance loses Docks: 10 players, absolute priority.",
         },
     },
 }
@@ -351,38 +340,36 @@ MBGA_BGs[13] = {
     format  = "Route de la Gloire 40v40",
     strat = {
         fr = {
-            winCondition = "L'équipe qui invoque l'Élémental EN PREMIER (Fangraal ou Kronus) gagne quasi systématiquement la Route de la Gloire.",
-            criticalRule = "Ignorer les events (AOA, BR, AE) = l'ennemi accumule les fragments 2× plus vite → invoque l'Élémental avant vous → gagne la Route.",
+            winCondition = "Combattez sur la Route de la Gloire (route principale). L'equipe qui invoque son Elemental de faction en premier gagne presque toujours.",
+            criticalRule = "Ne neglegez PAS les evenements speciaux sur les cotes (Colisee des Anciens, Tour, Excavation). Les ignorer = l'ennemi accumule les fragments 2 fois plus vite et invoque son elemental avant vous.",
             roles =
-                "• Route principale (25) : push + fight direct\n" ..
-                "• Events en rotation (10) : AOA / Brute's Rise / Excavation → 250 Conquest + fragments\n" ..
-                "• Backdoor Rogues (3-4) : Ring of Conquest en furtif → attaque base ennemie par derrière\n" ..
-                "• Porteur de l'Ancient Artifact (1) : TOUT le monde le protège s'il est obtenu",
+                "• Route principale (25 joueurs) : push et combat direct\n" ..
+                "• Evenements sur les cotes (10 joueurs) : Colisee des Anciens / Tour / Excavation -> fragments + Conquest\n" ..
+                "• Furtifs (3-4) : infiltrent la base ennemie par derriere via l'Anneau de Conquest\n" ..
+                "• Porteur de l'Artefact Ancestral : toute l'equipe le protege s'il l'obtient",
             planA =
-                "1. Split en 3 groupes : Route principale + Events + Backdoor Rogues\n" ..
-                "2. TRICK du Ring of Conquest : chargez les ogres du Ring → ils agro l'ennemi qui arrive (avantage positionnel)\n" ..
-                "3. Farmez les fragments → turnez à votre faction → invoquez l'Élémental\n" ..
-                "4. Élémental invoqué → poussez la Route GROUPÉS avec lui (absorbe 90% des dégâts)\n" ..
-                "5. Turnez 10 fragments à l'alchimiste de faction → potions de raid",
+                "1. Splittez en 3 groupes : Route + Evenements + Furtifs\n" ..
+                "2. Farmez les fragments des evenements -> remettez-les a l'alchimiste de votre faction\n" ..
+                "3. Elemental invoque -> poussez la route EN GROUPE avec lui (il absorbe la majorite des degats)\n" ..
+                "4. Ogres de l'Anneau : aggro-les sur les ennemis qui arrivent (avantage positionnel)",
             planB =
-                "Ring of Conquest perdu : NE PAS retenter frontalement. Farmez les events en masse → invoquez l'Élémental avant eux → revenez sur le Ring avec lui.",
+                "Vous perdez l'Anneau de Conquest : ne reessayez pas frontalement. Farmez les evenements -> invoquez l'elemental -> revenez avec lui.",
         },
         en = {
-            winCondition = "The team that summons the Elemental FIRST (Fangraal or Kronus) almost always wins the Glory Road.",
-            criticalRule = "Ignoring events (AOA, BR, AE) = enemy accumulates fragments 2× faster → summons Elemental before you → wins the Road.",
+            winCondition = "Fight on the Glory Road (central road). The team that summons their faction Elemental first almost always wins.",
+            criticalRule = "Do NOT neglect the side events (Ancient Coliseum, Tower, Excavation). Ignoring them means the enemy collects fragments 2x faster and summons their Elemental before you.",
             roles =
-                "• Main Road (25): push + direct fight\n" ..
-                "• Rotating events (10): AOA / Brute's Rise / Excavation → 250 Conquest + fragments\n" ..
-                "• Backdoor Rogues (3-4): stealth through Ring of Conquest → attack enemy base from behind\n" ..
-                "• Ancient Artifact carrier (1): EVERYONE protects them if obtained",
+                "• Main Road (25 players): push and direct combat\n" ..
+                "• Side events (10 players): Ancient Coliseum / Tower / Excavation -> fragments + Conquest\n" ..
+                "• Stealthers (3-4): infiltrate enemy base from behind through the Ring of Conquest\n" ..
+                "• Ancient Artifact carrier: the whole team protects them if obtained",
             planA =
-                "1. Split into 3 groups: Main Road + Events + Backdoor Rogues\n" ..
-                "2. Ring of Conquest TRICK: aggro the Ring ogres onto incoming enemies (positional advantage)\n" ..
-                "3. Farm fragments → turn in to faction → summon Elemental\n" ..
-                "4. Elemental summoned → push the Road GROUPED with it (absorbs 90% of damage)\n" ..
-                "5. Turn in 10 fragments to faction alchemist → raid potions",
+                "1. Split into 3 groups: Road + Events + Stealthers\n" ..
+                "2. Farm event fragments -> turn in to faction alchemist\n" ..
+                "3. Elemental summoned -> push the road GROUPED with it (absorbs most incoming damage)\n" ..
+                "4. Ring ogres: aggro them onto incoming enemies for positional advantage",
             planB =
-                "Ring of Conquest lost: DO NOT retry frontally. Mass farm events → summon Elemental before them → return to Ring with it.",
+                "You lose the Ring: don't retry frontally. Mass farm events -> summon Elemental first -> return with it.",
         },
     },
 }
@@ -394,40 +381,40 @@ MBGA_BGs[14] = {
     format  = "Attaque/Défense 40v40",
     strat = {
         fr = {
-            winCondition = "ATTAQUE : détruire la Relique dans le Fortress (30 min). DÉFENSE : empêcher l'attaque pendant 30 min. La Quick Punch gagne : 10-16 Siege Engines groupés sur UN mur = inarrêtable.",
-            criticalRule = "ATTAQUE : attendez 10-16 Siege Engines avant de pousser. 3-4 engins seuls = tués facilement. En masse = inarrêtables. La DIVERSION vers l'Est/Sud est obligatoire.",
+            winCondition = "ATTAQUANTS : detruisez les murs de la forteresse avec des vehicules de siege, puis la Relique a l'interieur. Vous avez 30 minutes.\nDEFENSEURS : empechez-les pendant 30 minutes.",
+            criticalRule = "ATTAQUE : n'avancez pas avec moins de 10 vehicules de siege. 3-4 seuls = elimines facilement. Une masse de 10+ sur UN SEUL mur = quasiment inarretable.",
             roles =
-                "• ATTAQUE — Masse principale (20-25) : Siege Engines + fantassins de protection devant\n" ..
-                "• ATTAQUE — Diversion (5-8) : attaque tours Est/Sud pour diviser la défense\n" ..
-                "• DÉFENSE — Canonniers (6) : 1 joueur par canon, focus UNIQUEMENT sur les véhicules\n" ..
-                "• DÉFENSE — Demolishers défensifs (best choice), Catapultes anti-joueurs",
+                "• ATTAQUE : 20-25 joueurs suivent les vehicules (l'infanterie marche DEVANT pour les proteger des canons)\n" ..
+                "• ATTAQUE Diversion (5-8) : attaquent les tours Est/Sud pour diviser les defenseurs\n" ..
+                "• DEFENSE Canonniers (6) : 1 par canon, visez UNIQUEMENT les vehicules (pas les joueurs a pied)\n" ..
+                "• DEFENSE : Demolisseurs defensifs sont le meilleur vehicule de defense",
             planA =
-                "ATTAQUE : attendez 10-16 Siege Engines → diversion Est/Sud (5-8 joueurs) → masse principale OUEST\n" ..
-                "Fantassins marchent DEVANT les Siege Engines pour les protéger\n" ..
-                "Une brèche → continuez par le MÊME trou (ne changez pas de mur)\n\n" ..
-                "DÉFENSE : 6 canons sur les véhicules uniquement (pas les joueurs à pied)\n" ..
-                "Murs = régénèrent après ~10 min si l'ennemi ne pousse plus\n" ..
-                "Mur percé → retraitez cour intérieure → canons intérieurs",
+                "ATTAQUE : attendez 10-16 vehicules -> diversion Est/Sud (5-8 joueurs) -> masse principale sur le mur OUEST\n" ..
+                "Infanterie marche DEVANT les vehicules pour les proteger\n" ..
+                "Une breche ouverte -> continuez DANS LE MEME TROU (ne changez pas de mur)\n\n" ..
+                "DEFENSE : canons vises vehicules uniquement\n" ..
+                "Murs se regenerent apres environ 10 minutes si l'ennemi arrete de pousser\n" ..
+                "Mur perce -> retraitez dans la cour interieure, utilisez les canons interieurs",
             planB =
-                "ATTAQUE bloquée : masse (25+) sur UN Workshop → overpower. 5 furtifs ninja le 2ème Workshop simultanément. DÉFENSE percée : cour intérieure + 5-6 joueurs sur la Relique pour interrompre en continu.",
+                "ATTAQUE bloquee : 25+ sur UN seul Artisanat -> overpower, 5 furtifs ninja le 2eme simultanement.\nDEFENSE percee : cour interieure + 5-6 joueurs sur la Relique pour l'interrompre en continu.",
         },
         en = {
             winCondition = "ATTACK: destroy the Relic inside the Fortress (30 min). DEFENSE: prevent the attack for 30 min. Quick Punch wins: 10-16 grouped Siege Engines on ONE wall = unstoppable.",
             criticalRule = "ATTACK: wait for 10-16 Siege Engines before pushing. 3-4 engines alone = easily killed. Massed = unstoppable. A DIVERSION to the East/South is mandatory.",
             roles =
-                "• ATTACK — Main mass (20-25): Siege Engines + infantry walking in front for protection\n" ..
-                "• ATTACK — Diversion (5-8): attack East/South towers to split the defense\n" ..
-                "• DEFENSE — Gunners (6): 1 player per cannon, focus ONLY on vehicles\n" ..
-                "• DEFENSE — Defensive Demolishers (best), Catapults for anti-player",
+                "• ATTACK (20-25 players): escort vehicles (infantry walks IN FRONT to shield them from cannons)\n" ..
+                "• ATTACK Diversion (5-8): attack East/South towers to split the defense\n" ..
+                "• DEFENSE Gunners (6): 1 per cannon, target ONLY vehicles (not infantry)\n" ..
+                "• DEFENSE: Demolishers are the best defensive vehicle choice",
             planA =
-                "ATTACK: wait for 10-16 Siege Engines → East/South diversion (5-8 players) → main mass pushes WEST\n" ..
-                "Infantry walks IN FRONT of Siege Engines to protect them\n" ..
-                "A breach → keep pushing through the SAME hole (don't switch walls)\n\n" ..
-                "DEFENSE: 6 cannons on vehicles only (not infantry)\n" ..
-                "Walls REGENERATE after ~10 min if enemy stops pushing\n" ..
-                "Wall breached → retreat inner courtyard → interior cannons",
+                "ATTACK: wait for 10-16 vehicles -> East/South diversion (5-8 players) -> main mass on WEST wall\n" ..
+                "Infantry IN FRONT of vehicles to shield them\n" ..
+                "Wall breached -> keep pushing THROUGH THE SAME HOLE (don't switch walls)\n\n" ..
+                "DEFENSE: cannons on vehicles only\n" ..
+                "Walls regenerate after ~10 min if enemy stops pushing\n" ..
+                "Wall breached -> retreat to inner courtyard, use interior cannons",
             planB =
-                "ATTACK stuck: mass (25+) on ONE Workshop → overpower. 5 stealthers ninja the 2nd Workshop simultaneously. DEFENSE breached: inner courtyard + 5-6 players on the Relic for continuous interrupts.",
+                "ATTACK stuck: 25+ on ONE Workshop -> overpower, 5 stealthers ninja the 2nd simultaneously.\nDEFENSE breached: inner courtyard + 5-6 players interrupt the Relic continuously.",
         },
     },
 }
@@ -439,48 +426,46 @@ MBGA_BGs[15] = {
     format  = "3 phases 40v40",
     strat = {
         fr = {
-            winCondition = "Tuer Domanaar après avoir progressé en 3 phases. NE PAS s'arrêter pour kill — les objectifs font gagner. Phase 3 : désactivez les Ethereal Defenses OBLIGATOIREMENT.",
-            criticalRule = "RÈGLE ABSOLUE : désactivez les Ethereal Defenses en Phase 3 (interagissez avec les structures mécaniques). Sans ça = push bloqué même si vous dominez tous les fights.",
+            winCondition = "Progressez en 3 phases pour atteindre et tuer Domanaar (le boss final). Capturez les objectifs de chaque phase avant de passer a la suivante.",
+            criticalRule = "Phase 3 OBLIGATOIRE : desactivez les Defenses Etheriques (structures mecaniques brillantes sur la carte) avant d'attaquer Domanaar. Sans ca, votre rush est completement bloque.",
             roles =
-                "• Push team (20) : rush les objectifs Phase 1→2→3 sans s'arrêter, classes mobiles\n" ..
-                "• Response/Défense (5) : défendent la Shenzar Refinery et les objectifs capturés (tanks + 1 heal)\n" ..
-                "• Objectif latéral (6-8) : recrutent les boss PNJ (Griefspine Ultradon, Kronus) — ils suivent le raid\n" ..
-                "• Stall team (4-5) : bloquent le GY ennemi pendant le boss final (2-3 tanks + 1 heal + mass CC)",
+                "• Equipe Rush (20) : classes mobiles, rush Phase 1 -> 2 -> 3 sans s'arreter\n" ..
+                "• Equipe Defense (5) : tanks + 1 healer, protegent la Raffinerie et les objectifs captures\n" ..
+                "• Equipe Laterale (6-8) : recrutent les boss recrues sur les cotes (ils rejoignent et renforcent le raid)\n" ..
+                "• Equipe Stall (4-5) : bloquent le point de respawn ennemi pendant le boss final",
             planA =
-                "PHASE 1 — Shenzar Refinery :\n" ..
-                "Push team (20) rush la Refinery → tuez les 3 gardes → capez\n" ..
-                "Ramassez les Ethereal Manacells → portez vers les outposts ennemis → détruisez\n\n" ..
-                "PHASE 2 — Path of Predation :\n" ..
-                "ARRIVEZ GROUPÉS (demi-équipe trop tôt = combat en sous-effectif = défaite)\n" ..
-                "Contrôlez le Path → ouvre les lanes vers la base ennemie\n\n" ..
-                "PHASE 3 — Bastion + Domanaar :\n" ..
-                "Désactivez les Ethereal Defenses (structures mécaniques)\n" ..
-                "Bastion capé → portails + GY avancé + buff raid\n" ..
-                "COMMIT TOTAL sur Domanaar — la stall team gère les renforts ennemis",
+                "PHASE 1 - Raffinerie de Shenzar :\n" ..
+                "Equipe Rush -> tuez 3 gardes -> capturez\n" ..
+                "Ramassez les Cellules Etheriques -> portez-les aux avant-postes ennemis -> detruisez\n\n" ..
+                "PHASE 2 - Sentier de la Predation :\n" ..
+                "Arrivez GROUPES (moitie trop tot = combat en sous-effectif = defaite)\n\n" ..
+                "PHASE 3 - Bastion + Domanaar :\n" ..
+                "Desactivez les Defenses Etheriques (structures brillantes)\n" ..
+                "Capturez le Bastion -> portails + respawn avance + buff raid\n" ..
+                "COMMIT TOTAL sur Domanaar",
             planB =
-                "Refinery perdue : push team continue vers le Path sans s'arrêter. Objectif latéral : priorisez les boss recrutables pour compenser le désavantage. Stall team : indispensable même si la Refinery est perdue.",
+                "Raffinerie perdue : continuez vers le Sentier sans vous arreter. Equipe Laterale : priorisez les boss recrues. Equipe Stall : obligatoire meme si Raffinerie perdue.",
         },
         en = {
-            winCondition = "Kill Domanaar after progressing through 3 phases. DON'T stop to fight — objectives win games. Phase 3: disabling Ethereal Defenses is MANDATORY.",
-            criticalRule = "ABSOLUTE RULE: disable the Ethereal Defenses in Phase 3 (interact with the mechanical structures). Without this = push blocked even if you dominate every fight.",
+            winCondition = "Progress through 3 phases to reach and kill Domanaar (final boss). Capture each phase's objectives before moving on.",
+            criticalRule = "Phase 3 MANDATORY: disable the Ethereal Defenses (bright mechanical structures on the map) before attacking Domanaar. Without this, your push is completely blocked.",
             roles =
-                "• Push team (20): rush Phase 1→2→3 objectives without stopping, mobile classes\n" ..
-                "• Response/Defense (5): defend Shenzar Refinery and captured objectives (tanks + 1 heal)\n" ..
-                "• Side objective team (6-8): recruit PNJ bosses (Griefspine Ultradon, Kronus) — they follow the raid\n" ..
-                "• Stall team (4-5): block enemy GY during final boss (2-3 tanks + 1 heal + mass CC)",
+                "• Rush team (20): mobile classes, rush Phase 1 -> 2 -> 3 without stopping\n" ..
+                "• Defense team (5): tanks + 1 healer, protect Refinery and captured objectives\n" ..
+                "• Side team (6-8): recruit side bosses (they join and reinforce the raid)\n" ..
+                "• Stall team (4-5): block enemy respawn point during the final boss",
             planA =
-                "PHASE 1 — Shenzar Refinery:\n" ..
-                "Push team (20) rushes the Refinery → kill 3 guards → cap\n" ..
-                "Pick up Ethereal Manacells → carry to enemy outposts → destroy\n\n" ..
-                "PHASE 2 — Path of Predation:\n" ..
-                "ARRIVE GROUPED (half the team arriving early = understaffed fight = defeat)\n" ..
-                "Control the Path → opens lanes to the enemy base\n\n" ..
-                "PHASE 3 — Bastion + Domanaar:\n" ..
-                "Disable Ethereal Defenses (mechanical structures)\n" ..
-                "Bastion captured → portals + advanced GY + raid buff\n" ..
-                "FULL COMMIT on Domanaar — stall team handles enemy reinforcements",
+                "PHASE 1 - Shenzar Refinery:\n" ..
+                "Rush team -> kill 3 guards -> capture\n" ..
+                "Pick up Ethereal Manacells -> carry to enemy outposts -> destroy\n\n" ..
+                "PHASE 2 - Path of Predation:\n" ..
+                "Arrive GROUPED (half arriving early = understaffed fight = defeat)\n\n" ..
+                "PHASE 3 - Bastion + Domanaar:\n" ..
+                "Disable Ethereal Defenses (bright structures on the map)\n" ..
+                "Capture Bastion -> portals + respawn point + raid buff\n" ..
+                "FULL COMMIT on Domanaar",
             planB =
-                "Refinery lost: push team continues to the Path without stopping. Side objective team: prioritize recruitable bosses to compensate the disadvantage. Stall team: still mandatory even if Refinery is lost.",
+                "Refinery lost: continue to Path without stopping. Side team: prioritize recruitable bosses. Stall team: mandatory even if Refinery is lost.",
         },
     },
 }
