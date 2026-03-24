@@ -339,6 +339,11 @@ function MBGA_UpdateLangUI()
     -- Rafraîchir tous les textes traduits
     MBGA_RefreshMainFrameLabels()
 
+    -- Sync les boutons FR/EN de la StratFrame si elle existe
+    if MBGA_UpdateStratLangUI then
+        MBGA_UpdateStratLangUI()
+    end
+
     -- Si la fiche stratégie est ouverte, la mettre à jour
     if MBGA_StratFrame and MBGA_StratFrame:IsShown() then
         MBGA_UpdateStratContent()

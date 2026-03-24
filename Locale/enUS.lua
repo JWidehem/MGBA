@@ -14,12 +14,12 @@ L["LANG_EN"]            = "EN"
 L["BTN_BACK"]           = "← Back"
 L["BTN_CLOSE"]          = "Close"
 
--- Sections de la fiche stratégie
-L["SECTION_WIN"]        = "🎯 WIN CONDITION"
-L["SECTION_RULE"]       = "⚠️ CRITICAL RULE"
-L["SECTION_ROLES"]      = "ROLES"
-L["SECTION_PLAN_A"]     = "📋 PLAN A"
-L["SECTION_PLAN_B"]     = "🔄 PLAN B (if things go south)"
+-- Sections de la fiche stratégie (clés conservées pour compatibilité)
+L["SECTION_WIN"]        = "WIN CONDITION"
+L["SECTION_RULE"]       = "CRITICAL RULE"
+L["SECTION_ROLES"]      = "COMPOSITION"
+L["SECTION_PLAN_A"]     = "PLAN A"
+L["SECTION_PLAN_B"]     = "PLAN B"
 
 -- Catégories
 L["CAT_NORMAL"]         = "BATTLEGROUNDS (10v10 / 15v15)"
