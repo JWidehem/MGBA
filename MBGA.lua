@@ -18,6 +18,10 @@ function MBGA_SwitchLocale(lang)
     for k, v in pairs(source) do
         MBGA_L[k] = v
     end
+    -- Rafraîchir l'UI si la fenêtre est déjà créée
+    if MBGA_RefreshMainFrameLabels then
+        MBGA_RefreshMainFrameLabels()
+    end
 end
 
 -- Frame principale pour les événements d'initialisation
@@ -29,7 +33,7 @@ eventFrame:RegisterEvent("PLAYER_LOGIN")
 eventFrame:SetScript("OnEvent", function(self, event, ...)
     if event == "ADDON_LOADED" then
         local addonName = ...
-        if addonName == "MakeBGsGreatAgain" then
+        if addonName == "MBGA" then
             MBGA_OnAddonLoaded()
         end
 
