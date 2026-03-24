@@ -1,8 +1,9 @@
 -- frFR.lua — Textes français de l'addon MBGA
--- Crée MBGA_LOCALE_FR (source FR) et initialise MBGA_L (table active, FR par défaut)
+-- Crée MBGA_LOCALE_FR (source FR immuable)
+-- MBGA_L est une table séparée, peuplée via MBGA_SwitchLocale("FR") à l'init
 
 MBGA_LOCALE_FR = {}
-MBGA_L = MBGA_LOCALE_FR  -- MBGA_L pointe vers la table active
+MBGA_L = {}  -- table active — NE PAS aliaser sur MBGA_LOCALE_FR (SwitchLocale EN la corromprait)
 local L = MBGA_LOCALE_FR
 
 -- Interface principale

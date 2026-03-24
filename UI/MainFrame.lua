@@ -12,7 +12,6 @@ local PADDING       = 16
 -- Couleurs sémantiques
 local COLOR_HORDE     = { r=0.55, g=0,    b=0 }
 local COLOR_ALLIANCE  = { r=0,    g=0.44, b=0.87 }
-local COLOR_AMBER     = { r=1,    g=0.65, b=0 }
 local COLOR_BG_DARK   = { r=0.10, g=0.10, b=0.12, a=0.95 }
 local COLOR_CELL_NORM = { r=0.18, g=0.18, b=0.22, a=0.90 }
 local COLOR_CELL_EPIC = { r=0.20, g=0.14, b=0.08, a=0.90 }
@@ -53,29 +52,29 @@ function MBGA_CreateMainFrame()
     closeBtn:SetPoint("TOPRIGHT", f, "TOPRIGHT", -4, -4)
 
     -- ─── Switches faction ─────────────────────────────────────────────────────
-    local hordeBtn = MBGA_CreateFactionButton(f, "Horde", "LEFT",  -120, -18)
-    local allBtn   = MBGA_CreateFactionButton(f, "Alliance", "RIGHT", 120, -18)
+    MBGA_CreateFactionButton(f, "Horde")
+    MBGA_CreateFactionButton(f, "Alliance")
 
-    -- ─── Switch langue ────────────────────────────────────────────────────────
-    local langFR = MBGA_CreateLangButton(f, "FR", -18, -18)
-    local langEN = MBGA_CreateLangButton(f, "EN",  18, -18)
+    -- ─── Switch langue (2ème rangée, centrée) ──────────────────────────────────
+    local langFR = MBGA_CreateLangButton(f, "FR", -22, -38)
+    local langEN = MBGA_CreateLangButton(f, "EN",  22, -38)
 
-    -- ─── Séparateur ───────────────────────────────────────────────────────────
+    -- ─── Séparateur ───────────────────────────────────────────────────────
     local sep = f:CreateTexture(nil, "ARTWORK")
     sep:SetColorTexture(0.4, 0.4, 0.4, 0.5)
     sep:SetSize(FRAME_W - 32, 1)
-    sep:SetPoint("TOP", f, "TOP", 0, -46)
+    sep:SetPoint("TOP", f, "TOP", 0, -54)
 
     -- ─── Catégories + grilles ─────────────────────────────────────────────────
     -- Normaux
     local catNormal = f:CreateFontString(nil, "OVERLAY")
     catNormal:SetFont("Fonts\\FRIZQT__.TTF", 11, "OUTLINE")
-    catNormal:SetPoint("TOPLEFT", f, "TOPLEFT", PADDING, -56)
+    catNormal:SetPoint("TOPLEFT", f, "TOPLEFT", PADDING, -62)
     catNormal:SetTextColor(0.75, 0.75, 0.75)
     catNormal:SetText(MBGA_L["CAT_NORMAL"])
 
     -- Ligne 1 (BGs 1-5)
-    local row1Y = -74
+    local row1Y = -78
     for i = 1, 5 do
         MBGA_CreateBGCell(f, i, i, row1Y)
     end
@@ -162,10 +161,15 @@ end
 
 -- ─── Bouton de faction ───────────────────────────────────────────────────────
 
-function MBGA_CreateFactionButton(parent, faction, point, xOff, yOff)
+function MBGA_CreateFactionButton(parent, faction)
     local btn = CreateFrame("Button", "MBGA_Btn_" .. faction, parent, "BackdropTemplate")
-    btn:SetSize(80, 22)
-    btn:SetPoint(point, parent, "TOP", xOff, yOff)
+    btn:SetSize(90, 24)
+    -- Ancrage correct : TOPLEFT pour Horde (gauche), TOPRIGHT pour Alliance (droite)
+    if faction == "Horde" then
+        btn:SetPoint("TOPLEFT", parent, "TOPLEFT", PADDING, -12)
+    else
+        btn:SetPoint("TOPRIGHT", parent, "TOPRIGHT", -PADDING, -12)
+    end
 
     btn:SetBackdrop({
         bgFile   = "Interface\\Tooltips\\UI-Tooltip-Background",
@@ -179,7 +183,14 @@ function MBGA_CreateFactionButton(parent, faction, point, xOff, yOff)
     label:SetAllPoints()
     label:SetJustifyH("CENTER")
     label:SetJustifyV("MIDDLE")
-    label:SetText(faction == "Horde" and ("🔴 " .. MBGA_L["FACTION_HORDE"]) or ("🔵 " .. MBGA_L["FACTION_ALLIANCE"]))
+    -- Texte en couleur faction (pas d'emoji — polices WoW ne les supportent pas)
+    if faction == "Horde" then
+        label:SetText(MBGA_L["FACTION_HORDE"])
+        label:SetTextColor(1, 0.4, 0.4)
+    else
+        label:SetText(MBGA_L["FACTION_ALLIANCE"])
+        label:SetTextColor(0.4, 0.7, 1)
+    end
     btn.label = label
 
     btn:SetScript("OnClick", function()

@@ -42,6 +42,8 @@ end)
 function MBGA_OnAddonLoaded()
     -- Met à jour la faction depuis le personnage réel
     MBGA_State.faction = UnitFactionGroup("player") or "Horde"
+    -- Peuple MBGA_L depuis MBGA_LOCALE_FR (tables séparées — voir frFR.lua)
+    MBGA_SwitchLocale("FR")
 end
 
 -- Appelé quand le joueur est connecté et en jeu

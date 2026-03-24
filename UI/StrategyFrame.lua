@@ -29,13 +29,13 @@ function MBGA_OpenStrategyFrame(bgIndex)
         MBGA_BuildStratFrame()
     end
 
-    MBGA_UpdateStratContent()
+    -- Show() EN PREMIER : GetStringHeight() retourne 0 sur une frame cachée
     MBGA_StratFrame:Show()
-
-    -- Cache la fenêtre principale pour l'espace écran
     if MBGA_MainFrame then
         MBGA_MainFrame:Hide()
     end
+
+    MBGA_UpdateStratContent()
 end
 
 -- ─── Construction de la frame (une seule fois) ───────────────────────────────
