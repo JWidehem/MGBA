@@ -7,33 +7,33 @@
 
 ## État général
 
-| Phase | Description | Statut |
-|-------|-------------|--------|
-| 1 | Structure de l'addon, .toc, init | ✅ Done |
-| 2 | Navigation complète grille → fiche → retour | ✅ Done |
-| 3 | Switch FR / EN fonctionnel | ✅ Done |
-| 4 | Switch Horde / Alliance (couleurs UI) | ✅ Done |
-| 5 | Détection automatique du BG (API live) | ❌ Non commencé |
-| 6 | Scan de la composition du groupe | ❌ Non commencé |
-| 7 | Attribution des rôles | ❌ Non commencé |
-| 8 | Envoi des 3 messages chat | ❌ Non commencé |
+| Phase | Description                                 | Statut          |
+| ----- | ------------------------------------------- | --------------- |
+| 1     | Structure de l'addon, .toc, init            | ✅ Done         |
+| 2     | Navigation complète grille → fiche → retour | ✅ Done         |
+| 3     | Switch FR / EN fonctionnel                  | ✅ Done         |
+| 4     | Switch Horde / Alliance (couleurs UI)       | ✅ Done         |
+| 5     | Détection automatique du BG (API live)      | ❌ Non commencé |
+| 6     | Scan de la composition du groupe            | ❌ Non commencé |
+| 7     | Attribution des rôles                       | ❌ Non commencé |
+| 8     | Envoi des 3 messages chat                   | ❌ Non commencé |
 
 ---
 
 ## Fichiers — état actuel
 
-| Fichier | Statut | Notes |
-|---------|--------|-------|
-| `MBGA.toc` | ✅ Final | Interface: 120000 (Midnight 12.0.0) |
-| `MBGA.lua` | ✅ Final | ADDON_LOADED vérifie `"MBGA"`, slash `/mbga` |
-| `Core/StrategyData.lua` | ✅ Final | 15 BGs complets, textes réécrits, sans → ni × |
-| `UI/MainFrame.lua` | ✅ Final | Grille 5×3 centrée, PADDING=29, f:Hide() au login |
-| `UI/StrategyFrame.lua` | ✅ Final | 5 boîtes colorées, layout dynamique |
-| `Locale/frFR.lua` | ✅ Final | Noms officiels FR (Wowhead) + corrections user |
-| `Locale/enUS.lua` | ✅ Final | Textes EN, pas d'emoji |
-| `Core/BattlegroundDetect.lua` | ❌ À créer | Phase 5 |
-| `Core/RoleAssigner.lua` | ❌ À créer | Phase 7 |
-| `Core/ChatMessenger.lua` | ❌ À créer | Phase 8 |
+| Fichier                       | Statut     | Notes                                             |
+| ----------------------------- | ---------- | ------------------------------------------------- |
+| `MBGA.toc`                    | ✅ Final   | Interface: 120000 (Midnight 12.0.0)               |
+| `MBGA.lua`                    | ✅ Final   | ADDON_LOADED vérifie `"MBGA"`, slash `/mbga`      |
+| `Core/StrategyData.lua`       | ✅ Final   | 15 BGs complets, textes réécrits, sans → ni ×     |
+| `UI/MainFrame.lua`            | ✅ Final   | Grille 5×3 centrée, PADDING=29, f:Hide() au login |
+| `UI/StrategyFrame.lua`        | ✅ Final   | 5 boîtes colorées, layout dynamique               |
+| `Locale/frFR.lua`             | ✅ Final   | Noms officiels FR (Wowhead) + corrections user    |
+| `Locale/enUS.lua`             | ✅ Final   | Textes EN, pas d'emoji                            |
+| `Core/BattlegroundDetect.lua` | ❌ À créer | Phase 5                                           |
+| `Core/RoleAssigner.lua`       | ❌ À créer | Phase 7                                           |
+| `Core/ChatMessenger.lua`      | ❌ À créer | Phase 8                                           |
 
 ---
 
@@ -69,19 +69,21 @@
 ## Prochaine session — par où commencer
 
 ### Option A — Phase 5 : Détection automatique du BG
+
 Créer `Core/BattlegroundDetect.lua`.  
 Écouter `PLAYER_ENTERING_WORLD` + `UPDATE_BATTLEFIELD_STATUS`.  
 Appeler `C_PvP.GetActiveMatchBracket()` et `C_Map.GetBestMapForUnit("player")`.  
 Résultat : le BG actuel est mis en surbrillance dans la grille.
 
 ### Option B — Tests visuels en jeu
+
 Charger l'addon en jeu (dossier `Interface/AddOns/MBGA`), tester les 15 fiches, vérifier le rendu des 5 boîtes, corriger si nécessaire.
 
 ---
 
 ## Points techniques à ne pas oublier
 
-- **Polices WoW** : ARIALN.TTF et FRIZQT__.TTF ne supportent pas `→ × ⚠️ 🎯` → toujours utiliser `->`, `x`, texte brut
+- **Polices WoW** : ARIALN.TTF et FRIZQT\_\_.TTF ne supportent pas `→ × ⚠️ 🎯` → toujours utiliser `->`, `x`, texte brut
 - **SendChatMessage** : protégée — uniquement depuis un clic bouton, jamais depuis un event automatique
 - **C_Timer.After** pour les délais entre messages (pas de boucle bloquante)
 - **NotifyInspect** nécessaire pour lire le spec/ilvl des autres joueurs (event `INSPECT_READY`)
