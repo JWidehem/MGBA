@@ -1,0 +1,16 @@
+# Environnement Python (conversion de fichiers .docx — plus nécessaire)
+.venv/
+__pycache__/
+*.pyc
+
+# Fichiers système Windows
+Thumbs.db
+Desktop.ini
+
+# Fichiers macOS
+.DS_Store
+
+# Fichiers temporaires éditeurs
+*.swp
+*.swo
+*~
