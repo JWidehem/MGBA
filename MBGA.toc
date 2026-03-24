@@ -3,7 +3,7 @@
 ## Notes: Guide stratégique PvP pour les battlegrounds — assignations de rôles et stratégies complètes
 ## Author: Mrrglgamesh
 ## Version: 1.0.0
-## IconTexture: Interface\AddOns\MakeBGsGreatAgain\Assets\Mrrglgamesh_icon
+## IconTexture: Interface\AddOns\MBGA\Assets\Mrrglgamesh_icon
 
 ## Locale
 Locale\frFR.lua
@@ -17,6 +17,6 @@ UI\MainFrame.lua
 UI\StrategyFrame.lua
 
 ## Entry point
-MakeBGsGreatAgain.lua
+MBGA.lua
 
 MakeBGsGreatAgain.lua
