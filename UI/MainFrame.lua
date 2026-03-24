@@ -2,12 +2,13 @@
 -- Header : titre centré + boutons Horde/Alliance sur les côtés + FR/EN en dessous
 
 -- Constantes de design
+-- PADDING = (FRAME_W - (5*CELL_W + 4*CELL_GAP)) / 2 = (690 - 632) / 2 = 29 → grille centrée
 local FRAME_W    = 690
-local FRAME_H    = 490
+local FRAME_H    = 430
 local CELL_W     = 120
 local CELL_H     = 90
 local CELL_GAP   = 8
-local PADDING    = 16
+local PADDING    = 29
 
 -- Couleurs sémantiques
 local COLOR_HORDE     = { r=0.55, g=0,    b=0    }
@@ -94,7 +95,7 @@ function MBGA_CreateMainFrame()
     -- ─── Ligne de séparation sous le header ──────────────────────────────────
     local sep1 = f:CreateTexture(nil, "ARTWORK")
     sep1:SetColorTexture(0.4, 0.4, 0.4, 0.5)
-    sep1:SetSize(FRAME_W - 32, 1)
+    sep1:SetSize(FRAME_W - 2 * PADDING, 1)  -- centré = largeur exacte de la grille
     sep1:SetPoint("TOP", f, "TOP", 0, -66)
 
     -- ─── Catégorie NORMAUX ────────────────────────────────────────────────────
@@ -120,7 +121,7 @@ function MBGA_CreateMainFrame()
     -- ─── Séparation épiques (teinte dorée) ───────────────────────────────────
     local sep2 = f:CreateTexture(nil, "ARTWORK")
     sep2:SetColorTexture(0.55, 0.40, 0.10, 0.6)
-    sep2:SetSize(FRAME_W - 32, 1)
+    sep2:SetSize(FRAME_W - 2 * PADDING, 1)  -- même largeur que la grille
     sep2:SetPoint("TOPLEFT", f, "TOPLEFT", PADDING, row2Y - CELL_H - 8)
 
     -- ─── Catégorie ÉPIQUES (teinte dorée pour distinguer) ────────────────────
