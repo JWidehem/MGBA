@@ -7,37 +7,37 @@
 
 ## État général
 
-| Phase | Description                                 | Statut          |
-| ----- | ------------------------------------------- | --------------- |
-| 1     | Structure de l'addon, .toc, init            | ✅ Done         |
-| 2     | Navigation complète grille → fiche → retour | ✅ Done         |
-| 3     | Switch FR / EN fonctionnel                  | ✅ Done         |
-| 4     | Switch Horde / Alliance (couleurs UI)       | ✅ Done         |
-| 2b    | Interface carte MDT-style (BGMapFrame)      | ✅ Done         |
-| 2c    | Refonte BGMapFrame v2 (2 onglets STRAT/RÔLES) | ✅ Done       |
-| 5     | Détection automatique du BG (API live)      | ❌ Non commencé |
-| 6     | Scan de la composition du groupe            | ❌ Non commencé |
-| 7     | Attribution des rôles                       | ❌ Non commencé |
-| 8     | Envoi des 3 messages chat                   | ❌ Non commencé |
+| Phase | Description                                   | Statut          |
+| ----- | --------------------------------------------- | --------------- |
+| 1     | Structure de l'addon, .toc, init              | ✅ Done         |
+| 2     | Navigation complète grille → fiche → retour   | ✅ Done         |
+| 3     | Switch FR / EN fonctionnel                    | ✅ Done         |
+| 4     | Switch Horde / Alliance (couleurs UI)         | ✅ Done         |
+| 2b    | Interface carte MDT-style (BGMapFrame)        | ✅ Done         |
+| 2c    | Refonte BGMapFrame v2 (2 onglets STRAT/RÔLES) | ✅ Done         |
+| 5     | Détection automatique du BG (API live)        | ❌ Non commencé |
+| 6     | Scan de la composition du groupe              | ❌ Non commencé |
+| 7     | Attribution des rôles                         | ❌ Non commencé |
+| 8     | Envoi des 3 messages chat                     | ❌ Non commencé |
 
 ---
 
 ## Fichiers — état actuel
 
-| Fichier                       | Statut     | Notes                                          |
-| ----------------------------- | ---------- | ---------------------------------------------- |
-| `MBGA.toc`                    | ✅ Final   | Interface: 120000 (Midnight 12.0.0)            |
-| `MBGA.lua`                    | ✅ Final   | ADDON_LOADED vérifie `"MBGA"`, slash `/mbga`   |
-| `Core/StrategyData.lua`       | ✅ Final   | 15 BGs complets, textes réécrits, sans → ni ×  |
-| `UI/MainFrame.lua`            | ✅ Final   | Click BG → MBGA_OpenBGMapFrame() désormais     |
-| `UI/StrategyFrame.lua`        | ✅ Archivé | Remplacé par BGMapFrame (accessible si besoin) |
-| `Core/BGMapData.lua`          | ✅ Final   | 15 BGs : nodes, spawns, 3 étapes chacun        |
+| Fichier                       | Statut     | Notes                                                |
+| ----------------------------- | ---------- | ---------------------------------------------------- |
+| `MBGA.toc`                    | ✅ Final   | Interface: 120000 (Midnight 12.0.0)                  |
+| `MBGA.lua`                    | ✅ Final   | ADDON_LOADED vérifie `"MBGA"`, slash `/mbga`         |
+| `Core/StrategyData.lua`       | ✅ Final   | 15 BGs complets, textes réécrits, sans → ni ×        |
+| `UI/MainFrame.lua`            | ✅ Final   | Click BG → MBGA_OpenBGMapFrame() désormais           |
+| `UI/StrategyFrame.lua`        | ✅ Archivé | Remplacé par BGMapFrame (accessible si besoin)       |
+| `Core/BGMapData.lua`          | ✅ Final   | 15 BGs : nodes, spawns, 3 étapes chacun              |
 | `UI/BGMapFrame.lua`           | ✅ Final   | **v2** — 2 onglets STRAT/RÔLES, header avec factions |
-| `Locale/frFR.lua`             | ✅ Final   | Noms officiels FR (Wowhead) + corrections user |
-| `Locale/enUS.lua`             | ✅ Final   | Textes EN, pas d'emoji                         |
-| `Core/BattlegroundDetect.lua` | ❌ À créer | Phase 5                                        |
-| `Core/RoleAssigner.lua`       | ❌ À créer | Phase 7                                        |
-| `Core/ChatMessenger.lua`      | ❌ À créer | Phase 8                                        |
+| `Locale/frFR.lua`             | ✅ Final   | Noms officiels FR (Wowhead) + corrections user       |
+| `Locale/enUS.lua`             | ✅ Final   | Textes EN, pas d'emoji                               |
+| `Core/BattlegroundDetect.lua` | ❌ À créer | Phase 5                                              |
+| `Core/RoleAssigner.lua`       | ❌ À créer | Phase 7                                              |
+| `Core/ChatMessenger.lua`      | ❌ À créer | Phase 8                                              |
 
 ---
 
@@ -132,7 +132,7 @@ ne ferme plus l'interface correctement.
 - **Symptôme** : clic sur `×` dans le header de BGMapFrame ne ferme pas la fenêtre.
 - **À investiguer** : `UIPanelCloseButton` cache son parent frame par défaut — vérifier que
   `MBGA_BGMapFrame` est bien le parent direct du `closeBtn` et qu'aucun autre frame n'intercepte.
-- **Fix attendu** : `×` cache `MBGA_BGMapFrame` uniquement (sans rouvrir la grille, 
+- **Fix attendu** : `×` cache `MBGA_BGMapFrame` uniquement (sans rouvrir la grille,
   contrairement à `← Retour`).
 
 ---
@@ -149,11 +149,12 @@ Ouvrir chaque BG dans l'addon, le user envoie une capture d'écran,
 on compare les positions des nodes et on ajuste `Core/BGMapData.lua` ensemble, BG par BG.
 
 Ordre suggéré (simple → complexe) :
+
 1. Warsong Gulch → 2. Twin Peaks → 3. Arathi Basin → 4. Eye of the Storm
-5. Battle for Gilneas → 6. Silvershard Mines → 7. Temple of Kotmogu
-8. Deepwind Gorge → 9. Seething Shore → 10. Deephaul Ravine
-11. Alterac Valley → 12. Isle of Conquest → 13. Ashran
-14. Wintergrasp → 15. Slayer's Rise (tiles custom à créer)
+2. Battle for Gilneas → 6. Silvershard Mines → 7. Temple of Kotmogu
+3. Deepwind Gorge → 9. Seething Shore → 10. Deephaul Ravine
+4. Alterac Valley → 12. Isle of Conquest → 13. Ashran
+5. Wintergrasp → 15. Slayer's Rise (tiles custom à créer)
 
 ### Priorité 3 — Enrichir l'onglet RÔLES avec exemples de classes
 
@@ -161,6 +162,7 @@ Actuellement l'onglet RÔLES affiche une liste de rôles textuels bruts (`strat.
 
 À faire : pour chaque rôle listé, afficher les **meilleures classes/specs** qui remplissent
 ce rôle dans ce BG spécifique. Exemple pour Arathi Basin :
+
 - `FC : Evoker Preservation, Druide Resto, Moine MW`
 - `Défense node : Blood DK, Prot War, Prot Pala`
 - `Ninja : Rogue (toutes specs), Druide Féral, DH Havoc`
