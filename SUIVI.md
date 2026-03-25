@@ -1,6 +1,6 @@
 # MBGA — Suivi du projet
 
-> Dernière mise à jour : 24 mars 2026  
+> Dernière mise à jour : 25 mars 2026  
 > À lire avec `Claude.md` pour reprendre le projet.
 
 ---
@@ -14,6 +14,7 @@
 | 3     | Switch FR / EN fonctionnel                  | ✅ Done         |
 | 4     | Switch Horde / Alliance (couleurs UI)       | ✅ Done         |
 | 2b    | Interface carte MDT-style (BGMapFrame)      | ✅ Done         |
+| 2c    | Refonte BGMapFrame v2 (2 onglets STRAT/RÔLES) | ✅ Done       |
 | 5     | Détection automatique du BG (API live)      | ❌ Non commencé |
 | 6     | Scan de la composition du groupe            | ❌ Non commencé |
 | 7     | Attribution des rôles                       | ❌ Non commencé |
@@ -31,7 +32,7 @@
 | `UI/MainFrame.lua`            | ✅ Final   | Click BG → MBGA_OpenBGMapFrame() désormais     |
 | `UI/StrategyFrame.lua`        | ✅ Archivé | Remplacé par BGMapFrame (accessible si besoin) |
 | `Core/BGMapData.lua`          | ✅ Final   | 15 BGs : nodes, spawns, 3 étapes chacun        |
-| `UI/BGMapFrame.lua`           | ✅ Final   | Carte MDT-style : tiles, nodes, flèches, steps |
+| `UI/BGMapFrame.lua`           | ✅ Final   | **v2** — 2 onglets STRAT/RÔLES, header avec factions |
 | `Locale/frFR.lua`             | ✅ Final   | Noms officiels FR (Wowhead) + corrections user |
 | `Locale/enUS.lua`             | ✅ Final   | Textes EN, pas d'emoji                         |
 | `Core/BattlegroundDetect.lua` | ❌ À créer | Phase 5                                        |
@@ -55,6 +56,35 @@
   - Fallback fond uni si les tiles Blizzard ne chargent pas (BGs nouveaux ou paths à calibrer)
 - Boutons Horde (rouge) / Alliance (bleu) dans le header de la grille
 - Boutons FR / EN dans la grille (BGs épiques affichent steps_en si disponibles)
+
+---
+
+## Derniers ajouts (BGMapFrame v2 — session 25 mars 2026)
+
+### Refonte complète de `UI/BGMapFrame.lua`
+
+Réécriture totale sur la base des maquettes Excalidraw partagées par le user.  
+Taille : 1000×660. Nouveau layout :
+
+- **Header** : `← Retour` | `Make BG's Great Again` (FRIZQT, centré) | `[Horde]` `[Alliance]` | `×`
+- **Bandeau nom BG** : pleine largeur, 26px, nom du BG en doré centré
+- **Zone carte** (gauche, 760px) : tiles 4×3, zoom molette, pan clic-glisser — identique à la v1
+- **Panneau droit** (~212px) avec **2 onglets** :
+
+  **Onglet STRAT** (par défaut) :
+  - Carte `OBJECTIF PRINCIPAL` (52px, texte depuis `strat.fr.objective`)
+  - Étapes numérotées dynamiques (depuis `BGMapData[i].steps_fr`) — boutons cliquables, highlight nodes + flèches
+  - Bouton `PLAN B` (orange fonçé) — affiche `strat.fr.planB` dans la descBox
+  - Bouton `ERREUR À NE PAS FAIRE` (rouge foncé) — affiche `strat.fr.avoid[]` dans la descBox
+  - Zone description (82px, bas) — contenu de l'élément actif
+
+  **Onglet RÔLES** :
+  - Carte "ROLES ET CLASSES RECOMMANDÉS" — liste depuis `strat.fr.roles[]`
+  - Carte "MEILLEURE COMP (PHASE 2)" — placeholder grisé, texte explicatif
+
+- Boutons Horde/Alliance dans le header de BGMapFrame (`MBGA_Map_HordeBtn` / `MBGA_Map_AlliBtn`)
+- Fonction `MBGA_UpdateMapFactionUI()` — mise à jour des couleurs faction dans la map frame
+- `MBGA_UpdateFactionUI()` dans `MainFrame.lua` appelle désormais `MBGA_UpdateMapFactionUI()` si disponible
 
 ---
 
@@ -90,12 +120,55 @@
 
 ---
 
+---
+
+## Bugs connus — à corriger en priorité
+
+### BUG 1 — La croix (×) ne ferme plus l'addon
+
+Depuis la refonte BGMapFrame v2, le bouton `×` (`UIPanelCloseButton`) du header de la map frame
+ne ferme plus l'interface correctement.
+
+- **Symptôme** : clic sur `×` dans le header de BGMapFrame ne ferme pas la fenêtre.
+- **À investiguer** : `UIPanelCloseButton` cache son parent frame par défaut — vérifier que
+  `MBGA_BGMapFrame` est bien le parent direct du `closeBtn` et qu'aucun autre frame n'intercepte.
+- **Fix attendu** : `×` cache `MBGA_BGMapFrame` uniquement (sans rouvrir la grille, 
+  contrairement à `← Retour`).
+
+---
+
 ## Prochaine session — par où commencer
 
-### Option A — Calibration des tiles et des nodes
+### Priorité 1 — Corriger BUG 1 (fermeture par ×)
 
-Charger l'addon en jeu, ouvrir chaque BG, vérifier les tiles et ajuster
-les positions des nodes dans `Core/BGMapData.lua`.
+Voir section "Bugs connus" ci-dessus.
+
+### Priorité 2 — Calibration BG par BG (captures d'écran)
+
+Ouvrir chaque BG dans l'addon, le user envoie une capture d'écran,
+on compare les positions des nodes et on ajuste `Core/BGMapData.lua` ensemble, BG par BG.
+
+Ordre suggéré (simple → complexe) :
+1. Warsong Gulch → 2. Twin Peaks → 3. Arathi Basin → 4. Eye of the Storm
+5. Battle for Gilneas → 6. Silvershard Mines → 7. Temple of Kotmogu
+8. Deepwind Gorge → 9. Seething Shore → 10. Deephaul Ravine
+11. Alterac Valley → 12. Isle of Conquest → 13. Ashran
+14. Wintergrasp → 15. Slayer's Rise (tiles custom à créer)
+
+### Priorité 3 — Enrichir l'onglet RÔLES avec exemples de classes
+
+Actuellement l'onglet RÔLES affiche une liste de rôles textuels bruts (`strat.fr.roles[]`).
+
+À faire : pour chaque rôle listé, afficher les **meilleures classes/specs** qui remplissent
+ce rôle dans ce BG spécifique. Exemple pour Arathi Basin :
+- `FC : Evoker Preservation, Druide Resto, Moine MW`
+- `Défense node : Blood DK, Prot War, Prot Pala`
+- `Ninja : Rogue (toutes specs), Druide Féral, DH Havoc`
+
+Chaque entrée de `roles[]` dans `StrategyData.lua` deviendra une table
+`{ role = "...", classes = { "...", "..." } }` — structure à définir ensemble.
+
+### Option A — Calibration des tiles et des nodes (voir Priorité 2 ci-dessus)
 
 ### Option B — Phase 5 : Détection automatique du BG
 
