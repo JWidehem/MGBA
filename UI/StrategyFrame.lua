@@ -8,11 +8,11 @@
 -- A EVITER: ~40% droite sous Plan B, fond rose
 -- ROLES   : pleine largeur, chips dark-mode
 
-local FRAME_W  = 660
-local FRAME_H  = 580
+local FRAME_W  = 750
+local FRAME_H  = 670
 local PAD      = 14   -- padding extérieur frame
-local IPAD     = 10   -- padding interne des blocs
-local GAP      = 8    -- espace vertical entre blocs
+local IPAD     = 12   -- padding interne des blocs
+local GAP      = 10   -- espace vertical entre blocs
 
 -- Largeur utile (frame - 2*PAD - scrollbar)
 local CWIDTH   = FRAME_W - 2 * PAD - 22
@@ -182,7 +182,7 @@ function MBGA_BuildStratFrame()
     objLbl:SetText("OBJECTIF")
 
     local objText = objBox:CreateFontString(nil, "OVERLAY")
-    objText:SetFont("Fonts\\ARIALN.TTF", 14)
+    objText:SetFont("Fonts\\ARIALN.TTF", 16)
     objText:SetTextColor(C_OBJ_TEXT[1], C_OBJ_TEXT[2], C_OBJ_TEXT[3])
     objText:SetJustifyH("LEFT")
     objText:SetJustifyV("TOP")
@@ -205,7 +205,7 @@ function MBGA_BuildStratFrame()
     planALbl:SetText("PLAN A")
 
     local planAText = planABox:CreateFontString(nil, "OVERLAY")
-    planAText:SetFont("Fonts\\ARIALN.TTF", 12)
+    planAText:SetFont("Fonts\\ARIALN.TTF", 13)
     planAText:SetTextColor(C_BODY[1], C_BODY[2], C_BODY[3])
     planAText:SetJustifyH("LEFT")
     planAText:SetJustifyV("TOP")
@@ -230,7 +230,7 @@ function MBGA_BuildStratFrame()
     planBLbl:SetText("PLAN B")
 
     local planBText = planBBox:CreateFontString(nil, "OVERLAY")
-    planBText:SetFont("Fonts\\ARIALN.TTF", 11)
+    planBText:SetFont("Fonts\\ARIALN.TTF", 12)
     planBText:SetTextColor(C_BODY[1], C_BODY[2], C_BODY[3])
     planBText:SetJustifyH("LEFT")
     planBText:SetJustifyV("TOP")
@@ -253,7 +253,7 @@ function MBGA_BuildStratFrame()
     avoidLbl:SetText("A EVITER")
 
     local avoidText = avoidBox:CreateFontString(nil, "OVERLAY")
-    avoidText:SetFont("Fonts\\ARIALN.TTF", 11)
+    avoidText:SetFont("Fonts\\ARIALN.TTF", 12)
     avoidText:SetTextColor(C_AVOID_TEXT[1], C_AVOID_TEXT[2], C_AVOID_TEXT[3])
     avoidText:SetJustifyH("LEFT")
     avoidText:SetJustifyV("TOP")

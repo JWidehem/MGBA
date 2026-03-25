@@ -5,6 +5,8 @@
 ## Version: 1.0.0
 ## IconTexture: Interface\AddOns\MBGA\Assets\Mrrglgamesh_icon
 
+## SavedVariables: MBGA_MinimapAngle
+
 ## Locale
 Locale\frFR.lua
 Locale\enUS.lua
@@ -15,6 +17,7 @@ Core\StrategyData.lua
 ## UI
 UI\MainFrame.lua
 UI\StrategyFrame.lua
+UI\MinimapButton.lua
 
 ## Entry point
 MBGA.lua

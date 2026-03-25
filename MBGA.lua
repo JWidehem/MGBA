@@ -54,6 +54,8 @@ end
 function MBGA_OnPlayerLogin()
     -- Crée la fenêtre principale (définie dans UI/MainFrame.lua)
     MBGA_CreateMainFrame()
+    -- Crée le bouton minimap (défini dans UI/MinimapButton.lua)
+    MBGA_CreateMinimapButton()
 end
 
 -- Commande slash pour ouvrir/fermer l'addon
