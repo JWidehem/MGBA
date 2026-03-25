@@ -1,4 +1,6 @@
--- UI/StrategyFrame.lua — Fiche stratégie redessinée
+"""Script pour écrire StrategyFrame.lua proprement en UTF-8."""
+
+lua = r"""-- UI/StrategyFrame.lua — Fiche stratégie redessinée
 -- Layout inspiré du mockup : Header / Objectif / Plan A+B côte à côte / A éviter / Rôles chips
 --
 -- HEADER  : badge type | nom grand | format sous-titre | boutons FR/EN | retour
@@ -568,3 +570,10 @@ function MBGA_RelayoutStratContent()
     -- Hauteur totale du contenu scrollable
     content:SetHeight(math.max(math.abs(y) + PAD, 100))
 end
+"""
+
+with open("d:/MBGA/UI/StrategyFrame.lua", "w", encoding="utf-8") as f:
+    f.write(lua)
+
+print("OK - StrategyFrame.lua written successfully")
+print(f"Size: {len(lua)} chars")

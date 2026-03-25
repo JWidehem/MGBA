@@ -1,4 +1,6 @@
--- Core/StrategyData.lua — Source de vérité pour toutes les stratégies
+"""Script temporaire pour écrire les fichiers Lua proprement en UTF-8."""
+
+lua = r"""-- Core/StrategyData.lua — Source de vérité pour toutes les stratégies
 -- Structure par BG : id, nameKey, isEpic, format, strat { fr = {...}, en = {...} }
 -- Champs : objective, planA (string), planB, avoid (table), roles (table de chips)
 
@@ -451,3 +453,10 @@ MBGA_BGs[15] = {
         },
     },
 }
+"""
+
+with open("d:/MBGA/Core/StrategyData.lua", "w", encoding="utf-8") as f:
+    f.write(lua)
+
+print("OK - StrategyData.lua written successfully")
+print(f"Size: {len(lua)} chars")
