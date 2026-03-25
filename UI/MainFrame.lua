@@ -190,9 +190,9 @@ function MBGA_CreateBGCell(parent, bgIndex, col, rowY)
     -- Highlight standard WoW au survol
     cell:SetHighlightTexture("Interface\\Buttons\\ButtonHiLight-Square", "ADD")
 
-    -- Clic → ouvre la fiche stratégie
+    -- Clic → ouvre la carte interactive du BG
     cell:SetScript("OnClick", function()
-        MBGA_OpenStrategyFrame(bgIndex)
+        MBGA_OpenBGMapFrame(bgIndex)
     end)
 
     cell.bgIndex = bgIndex

@@ -13,10 +13,12 @@ Locale\enUS.lua
 
 ## Core data
 Core\StrategyData.lua
+Core\BGMapData.lua
 
 ## UI
 UI\MainFrame.lua
 UI\StrategyFrame.lua
+UI\BGMapFrame.lua
 UI\MinimapButton.lua
 
 ## Entry point
