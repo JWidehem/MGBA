@@ -8,8 +8,8 @@
 -- A EVITER: ~40% droite sous Plan B, fond rose
 -- ROLES   : pleine largeur, chips dark-mode
 
-local FRAME_W  = 750
-local FRAME_H  = 670
+local FRAME_W  = 820
+local FRAME_H  = 730
 local PAD      = 14   -- padding extérieur frame
 local IPAD     = 12   -- padding interne des blocs
 local GAP      = 10   -- espace vertical entre blocs
@@ -182,7 +182,7 @@ function MBGA_BuildStratFrame()
     objLbl:SetText("OBJECTIF")
 
     local objText = objBox:CreateFontString(nil, "OVERLAY")
-    objText:SetFont("Fonts\\ARIALN.TTF", 16)
+    objText:SetFont("Fonts\\ARIALN.TTF", 18)
     objText:SetTextColor(C_OBJ_TEXT[1], C_OBJ_TEXT[2], C_OBJ_TEXT[3])
     objText:SetJustifyH("LEFT")
     objText:SetJustifyV("TOP")
@@ -205,7 +205,7 @@ function MBGA_BuildStratFrame()
     planALbl:SetText("PLAN A")
 
     local planAText = planABox:CreateFontString(nil, "OVERLAY")
-    planAText:SetFont("Fonts\\ARIALN.TTF", 13)
+    planAText:SetFont("Fonts\\ARIALN.TTF", 15)
     planAText:SetTextColor(C_BODY[1], C_BODY[2], C_BODY[3])
     planAText:SetJustifyH("LEFT")
     planAText:SetJustifyV("TOP")
@@ -230,7 +230,7 @@ function MBGA_BuildStratFrame()
     planBLbl:SetText("PLAN B")
 
     local planBText = planBBox:CreateFontString(nil, "OVERLAY")
-    planBText:SetFont("Fonts\\ARIALN.TTF", 12)
+    planBText:SetFont("Fonts\\ARIALN.TTF", 14)
     planBText:SetTextColor(C_BODY[1], C_BODY[2], C_BODY[3])
     planBText:SetJustifyH("LEFT")
     planBText:SetJustifyV("TOP")
@@ -253,7 +253,7 @@ function MBGA_BuildStratFrame()
     avoidLbl:SetText("A EVITER")
 
     local avoidText = avoidBox:CreateFontString(nil, "OVERLAY")
-    avoidText:SetFont("Fonts\\ARIALN.TTF", 12)
+    avoidText:SetFont("Fonts\\ARIALN.TTF", 14)
     avoidText:SetTextColor(C_AVOID_TEXT[1], C_AVOID_TEXT[2], C_AVOID_TEXT[3])
     avoidText:SetJustifyH("LEFT")
     avoidText:SetJustifyV("TOP")
@@ -442,19 +442,19 @@ function MBGA_BuildRoleChips(rolesTable)
     f.chips = {}
 
     local box = f.rolesBox
-    local chipH   = 20
-    local chipPad = 6   -- padding interne horizontal
-    local chipGap = 5   -- espace entre chips
-    local rowGap  = 5   -- espace entre lignes
+    local chipH   = 26
+    local chipPad = 8   -- padding interne horizontal
+    local chipGap = 6   -- espace entre chips
+    local rowGap  = 6   -- espace entre lignes
     local startX  = IPAD
-    local startY  = -(IPAD + 16 + 6)  -- sous le label "ROLES UTILES"
+    local startY  = -(IPAD + 16 + 8)  -- sous le label "ROLES UTILES"
     local x = startX
     local y = startY
     local maxX = CWIDTH - IPAD
 
     for _, role in ipairs(rolesTable) do
         -- Mesurer la largeur du texte (approximation : ~7px par char à taille 11)
-        local textW = math.max(#role * 7, 30)
+        local textW = math.max(#role * 8, 40)
         local chipW = textW + chipPad * 2
 
         -- Retour à la ligne si nécessaire
@@ -476,7 +476,7 @@ function MBGA_BuildRoleChips(rolesTable)
         chip:SetBackdropBorderColor(C_CHIP_BD[1], C_CHIP_BD[2], C_CHIP_BD[3], C_CHIP_BD[4])
 
         local lbl = chip:CreateFontString(nil, "OVERLAY")
-        lbl:SetFont("Fonts\\ARIALN.TTF", 11)
+        lbl:SetFont("Fonts\\ARIALN.TTF", 13)
         lbl:SetTextColor(C_CHIP_TEXT[1], C_CHIP_TEXT[2], C_CHIP_TEXT[3])
         lbl:SetAllPoints()
         lbl:SetJustifyH("CENTER")
@@ -488,13 +488,16 @@ function MBGA_BuildRoleChips(rolesTable)
     end
 
     -- Hauteur du rolesBox en fonction du nombre de lignes utilisées
-    local usedH = math.abs(y) + chipH + IPAD
+    local usedH = math.abs(y) + chipH + IPAD + 6
     if #rolesTable == 0 then usedH = 0 end
     f.rolesBox.chipsHeight = usedH
 end
 
--- ─── Layout dynamique ───────────────────────────────────────────────────────
--- Positionne et redimensionne chaque bloc selon la hauteur du texte mesuré.
+-- ─── Layout dynamique — remplit tout l'espace disponible ───────────────────
+-- 1. Calcule les hauteurs naturelles du texte
+-- 2. Distribue l'espace restant : 10% objectif, 75% colonnes, 15% rôles
+-- 3. Plan A s'étire pour égaler la hauteur de la colonne droite
+-- 4. Plan B s'étire pour remplir le reste de la colonne droite
 
 function MBGA_RelayoutStratContent()
     local f = MBGA_StratFrame
@@ -502,69 +505,73 @@ function MBGA_RelayoutStratContent()
     local content = f.scrollContent
     if not content then return end
 
-    local y = 0  -- curseur Y (valeurs négatives = vers le bas)
-
     -- Helper : hauteur sûre d'une FontString
     local function safeH(fs, minH)
         local h = fs:GetStringHeight()
         return (h and h > 0) and h or (minH or 12)
     end
 
-    -- ── 1. OBJECTIF ────────────────────────────────────────────────────────
-    local objLblH  = 12
-    local objTextH = safeH(f.objText, 14)
-    local objBoxH  = IPAD + objLblH + 4 + objTextH + IPAD
+    -- ── Hauteurs naturelles ─────────────────────────────────────────────────
+    local objNat   = IPAD + 14 + 4  + safeH(f.objText,   18) + IPAD
+    local planANat = IPAD + 12 + 5  + safeH(f.planAText, 15) + IPAD
+    local planBNat = IPAD + 12 + 4  + safeH(f.planBText, 14) + IPAD
+    local avoidVis = f.avoidBox:IsShown()
+    local avoidNat = avoidVis and (IPAD + 12 + 4 + safeH(f.avoidText, 14) + IPAD) or 0
+    local rightNat = planBNat + (avoidVis and (GAP + avoidNat) or 0)
+    local colsNat  = math.max(planANat, rightNat)
+    local rolesNat = (f.rolesBox.chipsHeight or 70) + IPAD + 16 + 8
+    if rolesNat < 70 then rolesNat = 70 end
+
+    -- ── Espace disponible (hauteur du scroll frame) ─────────────────────────
+    -- scroll va de (PAD + 64 + 8) px sous le haut jusqu'à (PAD + 4) du bas
+    local availH = FRAME_H - (PAD + 64 + 8) - (PAD + 4) - 20
+
+    -- ── Distribution de l'espace extra ──────────────────────────────────────
+    local totalNat = objNat + GAP + colsNat + GAP + rolesNat
+    local extra    = math.max(availH - totalNat, 0)
+
+    local objBoxH  = objNat   + math.floor(extra * 0.10)
+    local colsH    = colsNat  + math.floor(extra * 0.75)
+    local rolesH   = rolesNat + math.floor(extra * 0.15)
+
+    -- Plan A s'étire à hauteur totale de la colonne
+    local planABoxH = colsH
+
+    -- Plan B s'étire pour remplir la colonne droite au-dessus de Avoid
+    local planBBoxH = colsH - (avoidVis and (GAP + avoidNat) or 0)
+    if planBBoxH < planBNat then planBBoxH = planBNat end
+
+    -- ── Positionnement ──────────────────────────────────────────────────────
+    local y = 0
+
     f.objBox:ClearAllPoints()
     f.objBox:SetPoint("TOPLEFT", content, "TOPLEFT", 0, y)
     f.objBox:SetHeight(objBoxH)
     y = y - objBoxH - GAP
 
-    -- ── 2. PLAN A (gauche) + PLAN B + À ÉVITER (droite) ───────────────────
     local yColStart = y
-
-    -- Plan A
-    local planALblH  = 12
-    local planATextH = safeH(f.planAText, 12)
-    local planABoxH  = IPAD + planALblH + 5 + planATextH + IPAD
 
     f.planABox:ClearAllPoints()
     f.planABox:SetPoint("TOPLEFT", content, "TOPLEFT", 0, yColStart)
     f.planABox:SetHeight(planABoxH)
 
-    -- Plan B
-    local planBLblH  = 12
-    local planBTextH = safeH(f.planBText, 11)
-    local planBBoxH  = IPAD + planBLblH + 4 + planBTextH + IPAD
-
     f.planBBox:ClearAllPoints()
     f.planBBox:SetPoint("TOPLEFT", content, "TOPLEFT", COL_A_W + GAP, yColStart)
     f.planBBox:SetHeight(planBBoxH)
 
-    -- À éviter (sous Plan B)
-    local avoidVisible = f.avoidBox:IsShown()
-    local avoidBoxH = 0
-    if avoidVisible then
-        local avoidLblH  = 12
-        local avoidTextH = safeH(f.avoidText, 11)
-        avoidBoxH = IPAD + avoidLblH + 4 + avoidTextH + IPAD
+    if avoidVis then
         f.avoidBox:ClearAllPoints()
         f.avoidBox:SetPoint("TOPLEFT", content, "TOPLEFT", COL_A_W + GAP, yColStart - planBBoxH - GAP)
-        f.avoidBox:SetHeight(avoidBoxH)
+        f.avoidBox:SetHeight(avoidNat)
     end
 
-    -- Hauteur totale de la zone à 2 colonnes
-    local rightH  = planBBoxH + (avoidVisible and (GAP + avoidBoxH) or 0)
-    local colsH   = math.max(planABoxH, rightH)
     y = y - colsH - GAP
 
-    -- ── 3. RÔLES CHIPS ─────────────────────────────────────────────────────
-    local rolesH = (f.rolesBox.chipsHeight or 50) + IPAD + 16 + 6
-    if rolesH < 40 then rolesH = 40 end
     f.rolesBox:ClearAllPoints()
     f.rolesBox:SetPoint("TOPLEFT", content, "TOPLEFT", 0, y)
     f.rolesBox:SetHeight(rolesH)
     y = y - rolesH - GAP
 
-    -- Hauteur totale du contenu scrollable
-    content:SetHeight(math.max(math.abs(y) + PAD, 100))
+    -- Hauteur totale du contenu
+    content:SetHeight(math.max(math.abs(y) + PAD, availH))
 end
