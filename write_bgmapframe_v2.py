@@ -1,4 +1,7 @@
--- UI/BGMapFrame.lua — Interface carte interactive MDT-style (v2)
+#!/usr/bin/env python3
+# write_bgmapframe_v2.py — Génère UI/BGMapFrame.lua (layout v2 avec 2 onglets)
+
+lua = r"""-- UI/BGMapFrame.lua — Interface carte interactive MDT-style (v2)
 -- Layout : header + bandeau nom BG + carte (gauche) + panneau 2 onglets (droite)
 --
 -- Onglet STRAT  : Objectif principal | Etapes numérotées | Plan B | Erreur
@@ -1044,3 +1047,9 @@ function MBGA_UpdateMapFactionUI()
             0.95)
     end
 end
+"""
+
+with open(r"d:/MBGA/UI/BGMapFrame.lua", "w", encoding="utf-8") as out:
+    out.write(lua)
+
+print("BGMapFrame.lua v2 written:", len(lua), "chars")

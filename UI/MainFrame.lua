@@ -317,6 +317,11 @@ function MBGA_UpdateFactionUI()
     if MBGA_StratFrame and MBGA_StratFrame:IsShown() then
         MBGA_UpdateStratContent()
     end
+
+    -- Si la fenêtre de carte BG est ouverte, mettre à jour ses boutons faction
+    if MBGA_UpdateMapFactionUI then
+        MBGA_UpdateMapFactionUI()
+    end
 end
 
 -- ─── Mise à jour visuelle langue ─────────────────────────────────────────────
